@@ -184,16 +184,40 @@ textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
 .self-nom-note{font-size:.72rem;color:var(--muted);margin-top:6px;font-style:italic}
 
 /* === BROM CARDS (main page) === */
-.brom-card{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--bg2);cursor:pointer;transition:border-color .2s,background .2s,transform .15s;margin-bottom:14px;text-align:left;width:100%;display:flex;align-items:stretch;padding:0}
-.brom-card:hover{border-color:rgba(230,48,48,.4);background:var(--bg3);transform:translateY(-2px)}
-.brom-card-numcol{width:78px;flex-shrink:0;background:rgba(230,48,48,.08);border-right:1px solid rgba(230,48,48,.12);display:flex;align-items:center;justify-content:center;padding:28px 0}
-.brom-card-roman{font-size:1.7rem;font-weight:900;color:var(--red);letter-spacing:.04em;line-height:1}
-.brom-card-content{flex:1;padding:22px 24px;min-width:0}
-.brom-card-title{font-size:1.02rem;font-weight:900;color:#fff;letter-spacing:.03em;text-transform:uppercase;line-height:1.3;margin-bottom:8px}
-.brom-card-excerpt{font-size:.83rem;color:#888;line-height:1.65;margin-bottom:14px}
-.brom-card-footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.brom-read-btn{margin-left:auto;font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red);white-space:nowrap}
-.brom-vote-pill{display:flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;color:var(--muted)}
+/* === BROM SECTION HEADER === */
+.brom-section-header{border-radius:18px;overflow:hidden;background:linear-gradient(140deg,#1c1508 0%,#0e0e0e 55%,#12100a 100%);border:1px solid rgba(201,168,76,.2);padding:36px 32px;margin-bottom:14px;display:flex;align-items:center;gap:28px;box-shadow:0 4px 40px rgba(201,168,76,.06)}
+.brom-header-emblem{width:88px;height:88px;border-radius:50%;border:2px solid rgba(201,168,76,.45);box-shadow:0 0 0 7px rgba(201,168,76,.07),0 0 28px rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:2.1rem;font-weight:900;color:var(--gold);flex-shrink:0;font-family:Georgia,serif;letter-spacing:.02em;text-shadow:0 2px 12px rgba(201,168,76,.4)}
+.brom-header-text{flex:1}
+.brom-header-title{font-size:clamp(1.3rem,3.5vw,2rem);font-weight:900;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;line-height:1.1;margin-bottom:8px}
+.brom-header-sub{font-size:.6rem;font-weight:800;letter-spacing:.22em;color:rgba(201,168,76,.4);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.brom-header-sub::before,.brom-header-sub::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.2)}
+.brom-header-desc{font-size:.82rem;color:#888;line-height:1.6}
+/* === BROM CARDS === */
+.brom-card{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:#111;display:flex;align-items:stretch;margin-bottom:12px;cursor:pointer;transition:border-color .25s,transform .18s,box-shadow .25s;width:100%;text-align:left}
+.brom-card:hover{border-color:rgba(201,168,76,.28);transform:translateY(-2px);box-shadow:0 6px 32px rgba(0,0,0,.4)}
+.brom-card-left{width:150px;flex-shrink:0;background:linear-gradient(160deg,#191208 0%,#0d0c08 60%,#111009 100%);border-right:2px solid rgba(230,48,48,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 12px;gap:10px}
+.brom-card-roman{font-size:2.8rem;font-weight:900;color:#c9a84c;line-height:1;font-family:Georgia,'Times New Roman',serif;text-shadow:0 2px 16px rgba(201,168,76,.25);letter-spacing:.02em}
+.brom-card-ornament{font-size:.58rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,168,76,.35)}
+.brom-card-mid{flex:1;padding:24px 26px;min-width:0;border-right:1px solid rgba(255,255,255,.05)}
+.brom-card-title{font-size:.98rem;font-weight:900;color:#fff;letter-spacing:.06em;text-transform:uppercase;line-height:1.3;margin-bottom:9px}
+.brom-card-diamond{color:var(--gold);font-size:.75rem;margin-bottom:9px;opacity:.55}
+.brom-card-excerpt{font-size:.81rem;color:#888;line-height:1.65}
+.brom-card-right{width:176px;flex-shrink:0;padding:22px 20px;display:flex;flex-direction:column;gap:14px}
+.brom-vote-row{display:flex;gap:18px;margin-top:auto}
+.brom-vote-item{display:flex;flex-direction:column;gap:3px}
+.brom-vote-num{font-size:1.4rem;font-weight:900;line-height:1}
+.brom-vote-label{font-size:.52rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.bvc-up{color:#4caf50}
+.bvc-dn{color:var(--red)}
+.brom-read-btn{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap;margin-top:auto}
+@media(max-width:640px){
+  .brom-card{flex-wrap:wrap}
+  .brom-card-left{width:100%;flex-direction:row;padding:16px 20px;gap:14px;border-right:none;border-bottom:2px solid rgba(230,48,48,.3)}
+  .brom-card-roman{font-size:2rem}
+  .brom-card-right{width:100%;flex-direction:row;align-items:center;padding:14px 20px;border-top:1px solid rgba(255,255,255,.05)}
+  .brom-section-header{flex-direction:column;text-align:center;padding:28px 20px}
+  .brom-header-sub{justify-content:center}
+}
 .bvc-up{color:#4caf50}
 .bvc-dn{color:var(--red)}
 /* === BROM DETAIL PAGE === */
@@ -239,9 +263,13 @@ textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
     <span class="hero-badge">v2.0 — Revised &amp; Expanded</span>
   </div>
   <div class="container">
-    <div class="card" style="padding:24px 28px 20px">
-      <p class="card-title">The 10 Brommandments <span style="color:var(--muted);font-size:.65rem;font-weight:600;letter-spacing:.1em">&mdash; Click any article to read &amp; discuss</span></p>
-      <p style="color:var(--muted);font-size:.82rem;margin-top:6px">The foundational laws of brotherhood. Vote on each article. Join the discussion. The Council determines the ranking.</p>
+    <div class="brom-section-header">
+      <div class="brom-header-emblem">X</div>
+      <div class="brom-header-text">
+        <div class="brom-header-title">The 10 Brommandments</div>
+        <div class="brom-header-sub">Click any article to read &amp; discuss</div>
+        <p class="brom-header-desc">The foundational laws of brotherhood. Vote on each article. Join the discussion. The Council determines the ranking.</p>
+      </div>
     </div>
     <div id="brom-cards-list"></div>
 
