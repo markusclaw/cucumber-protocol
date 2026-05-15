@@ -108,6 +108,13 @@ footer p{font-size:.75rem;margin-bottom:6px}
 .sc-badge.verdict-gold{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
 .sc-badge.verdict-critical{background:rgba(230,48,48,.22);color:#ff5555;border:1px solid rgba(230,48,48,.6);animation:pulse-red 1.5s ease-in-out infinite}
 @keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(230,48,48,.4)}50%{box-shadow:0 0 0 6px rgba(230,48,48,0)}}
+
+.share-btn{background:none;border:none;cursor:pointer;color:var(--muted);padding:4px 6px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s,background .2s;flex-shrink:0}
+.share-btn:hover{color:#fff;background:rgba(255,255,255,.08)}
+.share-btn svg{display:block}
+.brom-share{margin-left:auto;padding-left:12px}
+#share-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#222;color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:30px;border:1px solid var(--border);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:9999}
+#share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
@@ -134,43 +141,43 @@ footer p{font-size:.75rem;margin-bottom:6px}
   <div class="container">
     <div class="card">
       <p class="card-title">The 10 Brommandments <span style="color:var(--muted);font-size:.65rem;font-weight:600;letter-spacing:.1em">— Articles I through X of the Official Bro Code</span></p>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-1">
         <div class="brom-num">I</div>
         <div><div class="brom-title">Bros Before Hoes</div><p class="brom-text">The foundational article. Not a guideline. Not a preference. The <span class="accent">immovable cornerstone</span> upon which all brotherhood is built. Your bro was there before her. Your bro will be there after. Your bro showed up at 2am with no questions asked. <span class="gold">Act accordingly. Always.</span></p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-2">
         <div class="brom-num">II</div>
         <div><div class="brom-title">A Bro Never Questions Another Bro's Method</div><p class="brom-text">If your bro has a system — for cooking, for driving, for washing vegetables, for <span class="accent">any activity conducted in the privacy of a garage</span> — you do not question it. You do not comment on it. You observe, you nod, and if necessary, you were never there. This is respect. This is the Code.</p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-3">
         <div class="brom-num">III</div>
         <div><div class="brom-title">A Bro Always Shows Up</div><p class="brom-text">Moving day. Breakup. 2am crisis. Questionable life decision that requires a witness. <span class="accent">No questions asked. No details required.</span> A bro shows up with a truck, a six-pack, or whatever is needed. The "why" is none of your business. Showing up is the whole job. <span class="gold">Greg showed up. RJ showed up. This is what it means.</span></p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-4">
         <div class="brom-num">IV</div>
         <div><div class="brom-title">A Bro Never Lets Another Bro Look Bad in Front of a Girl</div><p class="brom-text">If your bro is telling a story and gets the details wrong, you do not correct him. You back him up. You add details. You make it <span class="accent">legendary</span>. The story gets better every time. What started as a Tuesday becomes a saga. This is generosity. This is brotherhood. This is the Code.</p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-5">
         <div class="brom-num">V</div>
         <div><div class="brom-title">A Bro Never Dates Another Bro's Ex</div><p class="brom-text">The statute of limitations on this rule: <span class="accent">none</span>. Not after six months. Not after six years. Not after they move to different cities, different countries, or different dimensions. The rule does not expire. It does not bend. It does not make exceptions. <span class="gold">Not even if she's into metal.</span></p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-6">
         <div class="brom-num">VI</div>
         <div><div class="brom-title">A Bro Always Has a Wingman</div><p class="brom-text">No bro goes in alone. Whether it is a conversation, a party, a bad idea, or <span class="accent">a kitchen situation requiring plausible deniability</span> — your bro is stationed nearby, ready to create a distraction on demand. The wingman does not ask why. The wingman simply deploys. This is trust. This is tactics.</p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-7">
         <div class="brom-num">VII</div>
         <div><div class="brom-title">What Happens in the Group Chat Stays in the Group Chat</div><p class="brom-text">Screenshots are a <span class="accent">violation of the Code</span>. Reading group chat messages aloud to non-members is a violation. Summarizing, paraphrasing, or describing group chat events to outsiders is a violation. The group chat is classified. It is sacred. Certain documented incidents — including but not limited to <span class="gold">The Cucumber Accord of 2026</span> — are sealed under this article permanently.</p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-8">
         <div class="brom-num">VIII</div>
         <div><div class="brom-title">A Bro Supports the Playlist Without Complaint</div><p class="brom-text">Whoever controls the aux controls reality. You may silently disagree with the musical selection. You may <span class="accent">never</span> express this disagreement aloud. You may not change the song without permission. You may not "suggest" something passive-aggressively. <span class="gold">Exception: if Rafa is present, it's metal. It was always going to be metal. This is not up for discussion.</span></p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-9">
         <div class="brom-num">IX</div>
         <div><div class="brom-title">A Bro Is Entitled to Do Something Stupid — As Long As His Bros Are There to Witness It</div><p class="brom-text">Brotherhood is not about preventing mistakes. It is about <span class="accent">bearing witness</span> to them, helping pick up the pieces, and signing an unspoken agreement that this will never leave the circle. Unless it becomes legendary. If it becomes legendary, it becomes <span class="gold">a chapter in the Almanac</span>. See: Guides, Chapter I.</p></div>
       </div>
-      <div class="brommandment">
+      <div class="brommandment" id="brom-10">
         <div class="brom-num">X</div>
         <div><div class="brom-title">A Bro Keeps All Secrets Classified — Forever</div><p class="brom-text">If a bro confides something — a fear, a failure, a story involving produce, an incident requiring an inflatable evacuation ramp — that information is <span class="accent">sealed</span>. It does not leave the circle. It is not brought up at parties, on dates, or in court. The vault is permanent. <span class="gold">The sacred contract has no expiration date. This is law. This is the Code.</span></p></div>
       </div>
@@ -205,6 +212,7 @@ footer p{font-size:.75rem;margin-bottom:6px}
           <div class="chapter-card-sub">A complete taxonomy of acceptable bro greetings. Currently in field research.</div>
           <span class="chapter-card-arrow" style="color:var(--muted)">Classified →</span>
         </div>
+        <button class="share-btn brom-share" onclick="shareItem('brom-10','Article X — A Bro Keeps All Secrets Classified')" title="Share this article"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
       </div>
     </div>
   </div>
@@ -275,68 +283,68 @@ footer p{font-size:.75rem;margin-bottom:6px}
     <div style="margin-top:32px">
       <p class="card-title" style="text-align:center;font-size:.7rem;letter-spacing:.2em;margin-bottom:28px">STEP-BY-STEP SAFETY PROCEDURE</p>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">1</div><div class="sc-roman">I</div><div class="sc-title">Thou Shalt Not Make Eye Contact</div><span class="sc-badge verdict-no">⚠ Cardinal Rule</span></div>
+      <div class="safety-card" id="card-1">
+        <div class="sc-header"><div class="sc-num">1</div><div class="sc-roman">I</div><div class="sc-title">Thou Shalt Not Make Eye Contact</div><span class="sc-badge verdict-no">⚠ Cardinal Rule</span><button class="share-btn" onclick="shareItem('card-1','I — Thou Shalt Not Make Eye Contact')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/014209DA-EF01-4B20-9F64-2659F3750B03.png" alt="No Eye Contact">
         <div class="sc-body"><p class="sc-commentary">The most common rookie mistake. The cucumber is not beautiful. It is not interesting. It is a vegetable. The guy in the WRONG panel is caught thinking <span class="accent">"You're beautiful..."</span> and <span class="accent">"Maybe just one look..."</span> — this is how careers end. LOOK FORWARD. LOOK DOWN. LOOK ANYWHERE BUT THE VEGETABLE. Establish operational blindness and maintain it until the mission is complete.</p><span class="sc-badge verdict-no">✗ Looking Leads to Longing. Longing Leads to Disaster.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">2</div><div class="sc-roman">II</div><div class="sc-title">Thou Shalt Not Attempt Vertical Techniques</div><span class="sc-badge verdict-no">✗ Prohibited Orientation</span></div>
+      <div class="safety-card" id="card-2">
+        <div class="sc-header"><div class="sc-num">2</div><div class="sc-roman">II</div><div class="sc-title">Thou Shalt Not Attempt Vertical Techniques</div><span class="sc-badge verdict-no">✗ Prohibited Orientation</span><button class="share-btn" onclick="shareItem('card-2','II — Thou Shalt Not Attempt Vertical Techniques')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/B96CC767-B3C3-4955-815F-CF14594314CB.png" alt="No Vertical Techniques">
         <div class="sc-body"><p class="sc-commentary">There was an attempt. It did not end well. Anonymous wisdom teaches us: certain angles exist specifically to generate regret and silence. The trifecta of <span class="accent">"Maybe I can..."</span>, <span class="accent">"This'll be fine."</span>, and <span class="accent">"Never again."</span> has been documented. GRAVITY IS NOT YOUR ALLY. PRIDE COMES BEFORE THE FALL. Results may include: Regret, Silence, Shame. The Vertical Incident lives in infamy. Do not follow that path.</p><span class="sc-badge verdict-no">✗ Certain Angles Lead Only to Regret and Silence.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">3</div><div class="sc-roman">III</div><div class="sc-title">Thou Shalt Play Metal Music</div><span class="sc-badge verdict-ok">✓ Metal Certified</span></div>
+      <div class="safety-card" id="card-3">
+        <div class="sc-header"><div class="sc-num">3</div><div class="sc-roman">III</div><div class="sc-title">Thou Shalt Play Metal Music</div><span class="sc-badge verdict-ok">✓ Metal Certified</span><button class="share-btn" onclick="shareItem('card-3','III — Thou Shalt Play Metal Music')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/5D20D769-A9E2-4953-9447-50866686CACD.png" alt="Metal Music">
         <div class="sc-body"><p class="sc-commentary">The science is irrefutable. The chart is clear. Lo-fi Beats to Relax / Chill: <span class="accent">NOT METAL. NOT MASCULINE.</span> The man on the right has SLAYER at full blast: <span class="accent">METAL. MASCULINE. CERTIFIED.</span> There is no debate to be had here. Metal music is automatic masculinity certification. It is law. It cannot be questioned. Minimum volume: loud enough to drown out doubt. All other genres remain untested and potentially dangerous.</p><span class="sc-badge verdict-ok">✓ Metal Music = Automatic Masculinity Certification.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">4</div><div class="sc-roman">IV</div><div class="sc-title">Use Cold Water Always</div><span class="sc-badge verdict-ok">✓ Temperature Compliant</span></div>
+      <div class="safety-card" id="card-4">
+        <div class="sc-header"><div class="sc-num">4</div><div class="sc-roman">IV</div><div class="sc-title">Use Cold Water Always</div><span class="sc-badge verdict-ok">✓ Temperature Compliant</span><button class="share-btn" onclick="shareItem('card-4','IV — Use Cold Water Always')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/08F0E1D8-A43F-402B-9FDC-7F333B08A039.png" alt="Cold Water">
         <div class="sc-body"><p class="sc-commentary">The man on the left is running warm water. He is surrounded by question marks, steam, and the unmistakable aura of <span class="accent">AMBIGUITY, UNCERTAINTY, and REGRET</span>. He knows what he did. The man on the right uses cold water and receives: CLARITY. INTENT. CLOSURE. Three taps. Zero questions. Cold water establishes intent. Warm water opens doors to interpretation. <span class="gold">COLD WATER IS CLOSURE.</span> COLD WATER. NO EXCEPTIONS.</p><span class="sc-badge verdict-ok">✓ Cold Water. No Exceptions.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">5</div><div class="sc-roman">V</div><div class="sc-title">State Thy Intent Aloud</div><span class="sc-badge verdict-ok">✓ Mandatory</span></div>
+      <div class="safety-card" id="card-5">
+        <div class="sc-header"><div class="sc-num">5</div><div class="sc-roman">V</div><div class="sc-title">State Thy Intent Aloud</div><span class="sc-badge verdict-ok">✓ Mandatory</span><button class="share-btn" onclick="shareItem('card-5','V — State Thy Intent Aloud')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/3730B100-7809-4E0A-A0DA-646FFAC66791.png" alt="State Intent">
         <div class="sc-body"><p class="sc-commentary">The WRONG panel shows a man at the sink thinking <span class="accent">"Maybe a sandwich? Maybe..."</span> — unclear intent, invites confusion, invites doom. The RIGHT panel shows a man declaring <span class="accent">"THIS IS FOR SALAD."</span> with the conviction of a general addressing his troops. Authority. Control. Clarity. No Doubt. SAY IT. OWN IT. LOCK IT IN. Three words. No ambiguity. No hesitation. No room for interpretation.</p><span class="sc-badge verdict-ok">✓ Say it. Own it. Lock it in. "This is for salad."</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">6</div><div class="sc-roman">VI</div><div class="sc-title">Choose Thy Battlefield Wisely</div><span class="sc-badge verdict-ok">✓ Approved Zone</span></div>
+      <div class="safety-card" id="card-6">
+        <div class="sc-header"><div class="sc-num">6</div><div class="sc-roman">VI</div><div class="sc-title">Choose Thy Battlefield Wisely</div><span class="sc-badge verdict-ok">✓ Approved Zone</span><button class="share-btn" onclick="shareItem('card-6','VI — Choose Thy Battlefield Wisely')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/519A72CF-8DA0-4954-8D00-34200B49ACFE.png" alt="Choose Battlefield">
         <div class="sc-body"><p class="sc-commentary">The WRONG panel: a public kitchen. <span class="accent">"Bro... what are you doing? Huh?"</span> The sacred art is interrupted by questions, judgment, and the slow erosion of dignity. The RIGHT panel: THE GARAGE and THE BATHROOM — Sacred Spaces with <span class="accent">Zero Interrogation</span>. No questions. No witnesses. No explanations. SELECT YOUR THEATER WITH PRECISION. If forced into public, follow Brommandment X with absolute conviction and a face of stone.</p><span class="sc-badge verdict-ok">✓ Sacred Space. Zero Interrogation.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">7</div><div class="sc-roman">VII</div><div class="sc-title">Work With Decisive Speed</div><span class="sc-badge verdict-ok">✓ Execute</span></div>
+      <div class="safety-card" id="card-7">
+        <div class="sc-header"><div class="sc-num">7</div><div class="sc-roman">VII</div><div class="sc-title">Work With Decisive Speed</div><span class="sc-badge verdict-ok">✓ Execute</span><button class="share-btn" onclick="shareItem('card-7','VII — Work With Decisive Speed')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/7AED1DEF-F167-4B75-99F0-248805DD35BC.png" alt="Decisive Speed">
         <div class="sc-body"><p class="sc-commentary">The WRONG panel is a study in hesitation: <span class="accent">"Maybe later?"</span>, <span class="accent">"Is this really the move?"</span>, <span class="accent">"What if someone walks in?"</span> — TOO SLOW. TOO UNCERTAIN. OPPORTUNITY LOST. The RIGHT panel shows three stages: 1. GRIP. 2. EXECUTE. 3. COMPLETE. FAST. FOCUSED. FINAL. CLARITY THROUGH ACTION. Do not linger. Do not contemplate. A bro who lingers invites questions. A bro who moves invites nothing. MOVEMENT IS CLARITY.</p><span class="sc-badge verdict-ok">✓ Fast. Focused. Final.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">8</div><div class="sc-roman">VIII</div><div class="sc-title">Pat Dry Like Fixing an Engine</div><span class="sc-badge verdict-ok">✓ Maintenance Protocol</span></div>
+      <div class="safety-card" id="card-8">
+        <div class="sc-header"><div class="sc-num">8</div><div class="sc-roman">VIII</div><div class="sc-title">Pat Dry Like Fixing an Engine</div><span class="sc-badge verdict-ok">✓ Maintenance Protocol</span><button class="share-btn" onclick="shareItem('card-8','VIII — Pat Dry Like Fixing an Engine')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/92F1E539-70BA-40CB-897E-962E3D2D79F1.png" alt="Pat Dry">
         <div class="sc-body"><p class="sc-commentary">The WRONG panel shows a man thinking <span class="accent">"Don't want to hurt it..."</span> while gently cradling the cucumber like a precious artifact. TOO DELICATE. NOT MAINTENANCE. WORSHIP. The RIGHT panel shows three stages: 1. GRIP IT (Firm hold. Establish control.) 2. PAT IT DOWN (Strong. Thorough. No hesitation.) 3. DONE (Job complete. Move on.) Use a paper towel with the confidence of a mechanic. This is maintenance. This is function. NOTHING MORE.</p><span class="sc-badge verdict-ok">✓ Maintenance. Function. Nothing More.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">9</div><div class="sc-roman">IX</div><div class="sc-title">Consume Immediately</div><span class="sc-badge verdict-ok">✓ No Delays</span></div>
+      <div class="safety-card" id="card-9">
+        <div class="sc-header"><div class="sc-num">9</div><div class="sc-roman">IX</div><div class="sc-title">Consume Immediately</div><span class="sc-badge verdict-ok">✓ No Delays</span><button class="share-btn" onclick="shareItem('card-9','IX — Consume Immediately')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/5931B4E7-17F3-403D-9C3A-560EDF21E156.png" alt="Consume Immediately">
         <div class="sc-body"><p class="sc-commentary">The WRONG panel: a man staring into the open refrigerator thinking <span class="accent">"I'll save it for later..."</span> — PAUSE BREEDS UNCERTAINTY. THE VEG DIES. YOU DORMANT. REFRIGERATION IS REGRET. DELAY IS DEFEAT. FLAVOR DIES. INTENT WEAKENS. The RIGHT panel: 1. WASH → 2. COOK → 3. EAT. No delay. No doubt. Just action. IMMEDIATE ACTION. MAXIMUM FLAVOR. MAXIMUM RESULTS. A bro in motion stays in motion. That is physics. That is the Code.</p><span class="sc-badge verdict-ok">✓ Refrigeration is Regret. Delay is Defeat.</span></div>
       </div>
 
-      <div class="safety-card">
-        <div class="sc-header"><div class="sc-num">10</div><div class="sc-roman">X</div><div class="sc-title">Never Speak of It Again</div><span class="sc-badge verdict-gold">⚑ Sacred Contract</span></div>
+      <div class="safety-card" id="card-10">
+        <div class="sc-header"><div class="sc-num">10</div><div class="sc-roman">X</div><div class="sc-title">Never Speak of It Again</div><span class="sc-badge verdict-gold">⚑ Sacred Contract</span><button class="share-btn" onclick="shareItem('card-10','X — Never Speak of It Again')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/E1482B03-03B8-41CB-916B-A1E55E8B4613.png" alt="Never Speak">
         <div class="sc-body"><p class="sc-commentary">The WRONG panel shows an entire squad gathered, sharing notes, making eye contact, saying <span class="accent">"Nice cucumbers..."</span> — WORDS CREATE EVIDENCE. EYE CONTACT CREATES CONNECTION. MEMORIES CANNOT BE UNMADE. The RIGHT panel: backs turned, complete silence. No acknowledgment passes. No memory forms. The event is erased. The Code remains pure. <span class="gold">DON'T SPEAK. DON'T LOOK. DON'T REMEMBER. THIS IS LAW.</span></p><span class="sc-badge verdict-gold">⚑ Once complete, the matter is closed. It is done. It is forgotten.</span></div>
       </div>
 
-      <div class="safety-card" style="border-color:var(--red)">
-        <div class="sc-header" style="background:rgba(230,48,48,.12);border-bottom-color:var(--red)"><div class="sc-num" style="background:#ff2222">11</div><div class="sc-roman" style="color:var(--red)">XI</div><div class="sc-title" style="color:#ff5555">Emergency Protocol: Evacuate Immediately</div><span class="sc-badge verdict-critical">🚨 No Recovery</span></div>
+      <div class="safety-card" id="card-11" style="border-color:var(--red)">
+        <div class="sc-header" style="background:rgba(230,48,48,.12);border-bottom-color:var(--red)"><div class="sc-num" style="background:#ff2222">11</div><div class="sc-roman" style="color:var(--red)">XI</div><div class="sc-title" style="color:#ff5555">Emergency Protocol: Evacuate Immediately</div><span class="sc-badge verdict-critical">🚨 No Recovery</span><button class="share-btn" onclick="shareItem('card-11','XI — Emergency Protocol: Evacuate Immediately')" title="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div>
         <img src="public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png" alt="Emergency Evacuation">
         <div class="sc-body"><p class="sc-commentary">If for <em>any</em> reason eye contact has been made with another bro, the Protocol shifts immediately to emergency mode. <span class="accent">1. Eye contact made?</span> "You looked. He looked. That's all it takes." <span class="accent">2. Put on life vest.</span> Located in the kitchen cabinet. Wear it. Secure it. <span class="accent">3. Move to the nearest window.</span> Do not use doors. Do not speak. Do not look back. <span class="accent">4. Exit using the inflatable ramp.</span> Sit. Slide. Clear the building. Keep your hands inside the ramp. Do not stop. <span class="accent">5. Land. Distance. Disappear.</span> Move away from the building. Do not return. Do not make contact. The mission continues elsewhere.</p><span class="sc-badge verdict-critical">🚨 EYE CONTACT = IMMEDIATE EVACUATION. THERE IS NO RECOVERY FROM THIS.</span></div>
       </div>
@@ -472,5 +480,47 @@ function showPage(name) {
   window.scrollTo({ top:0, behavior:'smooth' });
 }
 </script>
+
+<div id="share-toast">🔗 Link copied to clipboard</div>
+<script>
+function shareItem(id, title) {
+  const base = window.location.href.split('#')[0];
+  const url  = base + '#' + id;
+  const shareData = { title: 'BRO CODE — ' + title, url };
+  if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
+    navigator.share(shareData).catch(() => copyFallback(url));
+  } else {
+    copyFallback(url);
+  }
+}
+function copyFallback(url) {
+  navigator.clipboard.writeText(url).then(showToast).catch(() => {
+    const el = document.createElement('textarea');
+    el.value = url; document.body.appendChild(el);
+    el.select(); document.execCommand('copy');
+    document.body.removeChild(el); showToast();
+  });
+}
+function showToast() {
+  const t = document.getElementById('share-toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+// Deep-link on load
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return;
+  if (hash.startsWith('brom-')) {
+    showPage('brommandments');
+  } else if (hash.startsWith('card-')) {
+    showPage('cucumber');
+  }
+  setTimeout(() => {
+    const el = document.getElementById(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 150);
+});
+</script>
+
 </body>
 </html>
