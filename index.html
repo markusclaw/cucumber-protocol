@@ -2,6 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="THE BRO CODE — Official Almanac">
+<meta property="og:url" content="https://markusclaw.github.io/cucumber-protocol/">
+<meta property="og:title" content="THE BRO CODE — Official Almanac & Field Manual">
+<meta property="og:description" content="The foundational laws of brotherhood. The 10 Brommandments. The Cucumber Protocol. The Hall of Bros. Written in silence. Sealed in loyalty.">
+<meta property="og:image" content="https://markusclaw.github.io/cucumber-protocol/public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png">
+<meta property="og:image:width" content="1440">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE BRO CODE — Official Almanac">
+<meta name="twitter:image" content="https://markusclaw.github.io/cucumber-protocol/public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THE BRO CODE — Official Almanac</title>
 <style>
@@ -484,8 +495,10 @@ function showPage(name) {
 <div id="share-toast">🔗 Link copied to clipboard</div>
 <script>
 function shareItem(id, title) {
-  const base = window.location.href.split('#')[0];
-  const url  = base + '#' + id;
+  const base = 'https://markusclaw.github.io/cucumber-protocol/';
+  const type = id.startsWith('card-') ? 'card' : 'brom';
+  const num  = id.split('-')[1];
+  const url  = base + type + '/' + num + '/';
   const shareData = { title: 'BRO CODE — ' + title, url };
   if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
     navigator.share(shareData).catch(() => copyFallback(url));
