@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="THE BRO CODE — Official Almanac">
-<meta property="og:url" content="https://markusclaw.github.io/cucumber-protocol/">
+<meta property="og:url" content="https://thebrommandments.com/">
 <meta property="og:title" content="THE BRO CODE — Official Almanac & Field Manual">
 <meta property="og:description" content="The foundational laws of brotherhood. The 10 Brommandments. The Cucumber Protocol. The Hall of Bros. Written in silence. Sealed in loyalty.">
-<meta property="og:image" content="https://markusclaw.github.io/cucumber-protocol/public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png">
+<meta property="og:image" content="https://thebrommandments.com/public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png">
 <meta property="og:image:width" content="1440">
 <meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE BRO CODE — Official Almanac">
-<meta name="twitter:image" content="https://markusclaw.github.io/cucumber-protocol/public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png">
+<meta name="twitter:image" content="https://thebrommandments.com/public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THE BRO CODE — Official Almanac</title>
 <style>
@@ -126,6 +126,38 @@ footer p{font-size:.75rem;margin-bottom:6px}
 .brom-share{margin-left:auto;padding-left:12px}
 #share-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#222;color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:30px;border:1px solid var(--border);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:9999}
 #share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* === VOTE BUTTONS === */
+.vote-row{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.vote-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:5px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .2s;min-width:52px;justify-content:center}
+.vote-btn:hover{background:var(--bg3);color:var(--text);border-color:rgba(255,255,255,.2)}
+.vote-btn.voted-up{background:rgba(40,180,80,.12);border-color:rgba(40,180,80,.4);color:#4caf50}
+.vote-btn.voted-down{background:var(--red-dim);border-color:rgba(230,48,48,.4);color:var(--red)}
+/* === COMMUNITY SECTION === */
+.community-brom{border:1px solid var(--border);border-radius:8px;padding:20px 22px;margin-bottom:14px;background:var(--bg2)}
+.community-brom.rising{border-color:rgba(201,168,76,.35);background:rgba(201,168,76,.04)}
+.community-brom-meta{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.community-brom-text{font-size:.88rem;color:#ccc;line-height:1.7;margin-bottom:14px}
+.rising-badge{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.35)}
+.pending-badge{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:rgba(68,136,255,.1);color:var(--blue);border:1px solid rgba(68,136,255,.25)}
+/* === SUBMIT FORM === */
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.88rem;padding:10px 14px;font-family:inherit;transition:border-color .2s;-webkit-appearance:none}
+.form-input:focus{outline:none;border-color:rgba(230,48,48,.5);background:var(--bg2)}
+textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
+.submit-btn{background:var(--red);border:none;border-radius:6px;color:#fff;font-size:.75rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;padding:12px 24px;cursor:pointer;transition:opacity .2s,transform .1s;width:100%;margin-top:4px}
+.submit-btn:hover{opacity:.85}
+.submit-btn:active{transform:scale(.98)}
+.council-empty{text-align:center;padding:48px 20px;color:var(--muted);font-size:.85rem;line-height:1.8}
+.form-error{color:var(--red);font-size:.72rem;font-weight:700;margin-top:6px;letter-spacing:.05em;display:none}
+.score-display{font-size:.7rem;color:var(--muted);letter-spacing:.05em;margin-left:auto}
+.score-display.positive{color:#4caf50}
+.score-display.negative{color:var(--red)}
+.council-info-box{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin-top:16px}
+.council-info-box p{font-size:.82rem;color:#aaa;margin-bottom:10px}
+.council-info-box p:last-child{margin-bottom:0}
+@media(max-width:600px){.vote-btn{min-width:44px;padding:5px 8px}.nav-link{font-size:.6rem;padding:6px 6px}}
 </style>
 </head>
 <body>
@@ -137,6 +169,7 @@ footer p{font-size:.75rem;margin-bottom:6px}
     <button class="nav-link" onclick="showPage('guides')">Guides</button>
     <button class="nav-link" onclick="showPage('principles')">The Code</button>
     <button class="nav-link" onclick="showPage('hall')">Hall of Bros</button>
+    <button class="nav-link" onclick="showPage('council')">Council</button>
   </div>
 </nav>
 
@@ -154,43 +187,43 @@ footer p{font-size:.75rem;margin-bottom:6px}
       <p class="card-title">The 10 Brommandments <span style="color:var(--muted);font-size:.65rem;font-weight:600;letter-spacing:.1em">— Articles I through X of the Official Bro Code</span></p>
       <div class="brommandment" id="brom-1">
         <div class="brom-num">I</div>
-        <div><div class="brom-title">Bros Before Hoes</div><p class="brom-text">The foundational article. Not a guideline. Not a preference. The <span class="accent">immovable cornerstone</span> upon which all brotherhood is built. Your bro was there before her. Your bro will be there after. Your bro showed up at 2am with no questions asked. <span class="gold">Act accordingly. Always.</span></p></div>
+        <div><div class="brom-title">Bros Before Hoes</div><p class="brom-text">The foundational article. Not a guideline. Not a preference. The <span class="accent">immovable cornerstone</span> upon which all brotherhood is built. Your bro was there before her. Your bro will be there after. Your bro showed up at 2am with no questions asked. <span class="gold">Act accordingly. Always.</span></p><div class="vote-row"><button class="vote-btn" id="vup-brom-1" onclick="castVote('brom-1',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-1" onclick="castVote('brom-1',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-1','Article I — Bros Before Hoes')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-2">
         <div class="brom-num">II</div>
-        <div><div class="brom-title">A Bro Never Questions Another Bro's Method</div><p class="brom-text">If your bro has a system — for cooking, for driving, for washing vegetables, for <span class="accent">any activity conducted in the privacy of a garage</span> — you do not question it. You do not comment on it. You observe, you nod, and if necessary, you were never there. This is respect. This is the Code.</p></div>
+        <div><div class="brom-title">A Bro Never Questions Another Bro's Method</div><p class="brom-text">If your bro has a system — for cooking, for driving, for washing vegetables, for <span class="accent">any activity conducted in the privacy of a garage</span> — you do not question it. You do not comment on it. You observe, you nod, and if necessary, you were never there. This is respect. This is the Code.</p><div class="vote-row"><button class="vote-btn" id="vup-brom-2" onclick="castVote('brom-2',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-2" onclick="castVote('brom-2',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-2','Article II — Never Question the Method')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-3">
         <div class="brom-num">III</div>
-        <div><div class="brom-title">A Bro Always Shows Up</div><p class="brom-text">Moving day. Breakup. 2am crisis. Questionable life decision that requires a witness. <span class="accent">No questions asked. No details required.</span> A bro shows up with a truck, a six-pack, or whatever is needed. The "why" is none of your business. Showing up is the whole job. <span class="gold">Greg showed up. RJ showed up. This is what it means.</span></p></div>
+        <div><div class="brom-title">A Bro Always Shows Up</div><p class="brom-text">Moving day. Breakup. 2am crisis. Questionable life decision that requires a witness. <span class="accent">No questions asked. No details required.</span> A bro shows up with a truck, a six-pack, or whatever is needed. The "why" is none of your business. Showing up is the whole job. <span class="gold">Greg showed up. RJ showed up. This is what it means.</span></p><div class="vote-row"><button class="vote-btn" id="vup-brom-3" onclick="castVote('brom-3',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-3" onclick="castVote('brom-3',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-3','Article III — A Bro Always Shows Up')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-4">
         <div class="brom-num">IV</div>
-        <div><div class="brom-title">A Bro Never Lets Another Bro Look Bad in Front of a Girl</div><p class="brom-text">If your bro is telling a story and gets the details wrong, you do not correct him. You back him up. You add details. You make it <span class="accent">legendary</span>. The story gets better every time. What started as a Tuesday becomes a saga. This is generosity. This is brotherhood. This is the Code.</p></div>
+        <div><div class="brom-title">A Bro Never Lets Another Bro Look Bad in Front of a Girl</div><p class="brom-text">If your bro is telling a story and gets the details wrong, you do not correct him. You back him up. You add details. You make it <span class="accent">legendary</span>. The story gets better every time. What started as a Tuesday becomes a saga. This is generosity. This is brotherhood. This is the Code.</p><div class="vote-row"><button class="vote-btn" id="vup-brom-4" onclick="castVote('brom-4',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-4" onclick="castVote('brom-4',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-4','Article IV — Never Let a Bro Look Bad')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-5">
         <div class="brom-num">V</div>
-        <div><div class="brom-title">A Bro Never Dates Another Bro's Ex</div><p class="brom-text">The statute of limitations on this rule: <span class="accent">none</span>. Not after six months. Not after six years. Not after they move to different cities, different countries, or different dimensions. The rule does not expire. It does not bend. It does not make exceptions. <span class="gold">Not even if she's into metal.</span></p></div>
+        <div><div class="brom-title">A Bro Never Dates Another Bro's Ex</div><p class="brom-text">The statute of limitations on this rule: <span class="accent">none</span>. Not after six months. Not after six years. Not after they move to different cities, different countries, or different dimensions. The rule does not expire. It does not bend. It does not make exceptions. <span class="gold">Not even if she's into metal.</span></p><div class="vote-row"><button class="vote-btn" id="vup-brom-5" onclick="castVote('brom-5',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-5" onclick="castVote('brom-5',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-5','Article V — The Ex Rule')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-6">
         <div class="brom-num">VI</div>
-        <div><div class="brom-title">A Bro Always Has a Wingman</div><p class="brom-text">No bro goes in alone. Whether it is a conversation, a party, a bad idea, or <span class="accent">a kitchen situation requiring plausible deniability</span> — your bro is stationed nearby, ready to create a distraction on demand. The wingman does not ask why. The wingman simply deploys. This is trust. This is tactics.</p></div>
+        <div><div class="brom-title">A Bro Always Has a Wingman</div><p class="brom-text">No bro goes in alone. Whether it is a conversation, a party, a bad idea, or <span class="accent">a kitchen situation requiring plausible deniability</span> — your bro is stationed nearby, ready to create a distraction on demand. The wingman does not ask why. The wingman simply deploys. This is trust. This is tactics.</p><div class="vote-row"><button class="vote-btn" id="vup-brom-6" onclick="castVote('brom-6',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-6" onclick="castVote('brom-6',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-6','Article VI — A Bro Always Has a Wingman')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-7">
         <div class="brom-num">VII</div>
-        <div><div class="brom-title">What Happens in the Group Chat Stays in the Group Chat</div><p class="brom-text">Screenshots are a <span class="accent">violation of the Code</span>. Reading group chat messages aloud to non-members is a violation. Summarizing, paraphrasing, or describing group chat events to outsiders is a violation. The group chat is classified. It is sacred. Certain documented incidents — including but not limited to <span class="gold">The Cucumber Accord of 2026</span> — are sealed under this article permanently.</p></div>
+        <div><div class="brom-title">What Happens in the Group Chat Stays in the Group Chat</div><p class="brom-text">Screenshots are a <span class="accent">violation of the Code</span>. Reading group chat messages aloud to non-members is a violation. Summarizing, paraphrasing, or describing group chat events to outsiders is a violation. The group chat is classified. It is sacred. Certain documented incidents — including but not limited to <span class="gold">The Cucumber Accord of 2026</span> — are sealed under this article permanently.</p><div class="vote-row"><button class="vote-btn" id="vup-brom-7" onclick="castVote('brom-7',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-7" onclick="castVote('brom-7',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-7','Article VII — Group Chat Stays in the Group Chat')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-8">
         <div class="brom-num">VIII</div>
-        <div><div class="brom-title">A Bro Supports the Playlist Without Complaint</div><p class="brom-text">Whoever controls the aux controls reality. You may silently disagree with the musical selection. You may <span class="accent">never</span> express this disagreement aloud. You may not change the song without permission. You may not "suggest" something passive-aggressively. <span class="gold">Exception: if Rafa is present, it's metal. It was always going to be metal. This is not up for discussion.</span></p></div>
+        <div><div class="brom-title">A Bro Supports the Playlist Without Complaint</div><p class="brom-text">Whoever controls the aux controls reality. You may silently disagree with the musical selection. You may <span class="accent">never</span> express this disagreement aloud. You may not change the song without permission. You may not "suggest" something passive-aggressively. <span class="gold">Exception: if Rafa is present, it's metal. It was always going to be metal. This is not up for discussion.</span></p><div class="vote-row"><button class="vote-btn" id="vup-brom-8" onclick="castVote('brom-8',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-8" onclick="castVote('brom-8',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-8','Article VIII — Support the Playlist')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-9">
         <div class="brom-num">IX</div>
-        <div><div class="brom-title">A Bro Is Entitled to Do Something Stupid — As Long As His Bros Are There to Witness It</div><p class="brom-text">Brotherhood is not about preventing mistakes. It is about <span class="accent">bearing witness</span> to them, helping pick up the pieces, and signing an unspoken agreement that this will never leave the circle. Unless it becomes legendary. If it becomes legendary, it becomes <span class="gold">a chapter in the Almanac</span>. See: Guides, Chapter I.</p></div>
+        <div><div class="brom-title">A Bro Is Entitled to Do Something Stupid — As Long As His Bros Are There to Witness It</div><p class="brom-text">Brotherhood is not about preventing mistakes. It is about <span class="accent">bearing witness</span> to them, helping pick up the pieces, and signing an unspoken agreement that this will never leave the circle. Unless it becomes legendary. If it becomes legendary, it becomes <span class="gold">a chapter in the Almanac</span>. See: Guides, Chapter I.</p><div class="vote-row"><button class="vote-btn" id="vup-brom-9" onclick="castVote('brom-9',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-9" onclick="castVote('brom-9',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-9','Article IX — Witness the Stupidity')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
       <div class="brommandment" id="brom-10">
         <div class="brom-num">X</div>
-        <div><div class="brom-title">A Bro Keeps All Secrets Classified — Forever</div><p class="brom-text">If a bro confides something — a fear, a failure, a story involving produce, an incident requiring an inflatable evacuation ramp — that information is <span class="accent">sealed</span>. It does not leave the circle. It is not brought up at parties, on dates, or in court. The vault is permanent. <span class="gold">The sacred contract has no expiration date. This is law. This is the Code.</span></p></div>
+        <div><div class="brom-title">A Bro Keeps All Secrets Classified — Forever</div><p class="brom-text">If a bro confides something — a fear, a failure, a story involving produce, an incident requiring an inflatable evacuation ramp — that information is <span class="accent">sealed</span>. It does not leave the circle. It is not brought up at parties, on dates, or in court. The vault is permanent. <span class="gold">The sacred contract has no expiration date. This is law. This is the Code.</span></p><div class="vote-row"><button class="vote-btn" id="vup-brom-10" onclick="castVote('brom-10',1)">&#9650; <span>0</span></button><button class="vote-btn" id="vdn-brom-10" onclick="castVote('brom-10',-1)">&#9660; <span>0</span></button><button class="share-btn" onclick="shareItem('brom-10','Article X — Secrets Are Classified Forever')" title="Share this article" style="margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div>
       </div>
     </div>
 
@@ -223,7 +256,7 @@ footer p{font-size:.75rem;margin-bottom:6px}
           <div class="chapter-card-sub">A complete taxonomy of acceptable bro greetings. Currently in field research.</div>
           <span class="chapter-card-arrow" style="color:var(--muted)">Classified →</span>
         </div>
-        <button class="share-btn brom-share" onclick="shareItem('brom-10','Article X — A Bro Keeps All Secrets Classified')" title="Share this article"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+        
       </div>
     </div>
   </div>
@@ -472,6 +505,53 @@ footer p{font-size:.75rem;margin-bottom:6px}
 </div>
 
 
+
+<!-- PAGE: THE COUNCIL OF BROS -->
+<div id="page-council" class="page">
+  <div class="hero" style="padding:56px 24px 48px">
+    <p class="hero-eyebrow">Community &middot; The Democratic Process of Brotherhood</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,7vw,4.5rem)">THE<br>COUNCIL<br>OF BROS</h1>
+    <p class="hero-sub">Where new Brommandments are born, tested, and voted into canon &mdash; or quietly destroyed. This is democracy in its purest, most masculine form.</p>
+  </div>
+  <div class="container">
+    <div class="card">
+      <p class="card-title">How the Council Works</p>
+      <p>Any bro may propose a Brommandment. The community votes it up or down. Articles that accumulate <span class="hl">+10 or more net votes</span> earn <span class="hl-gold">Rising status</span> &mdash; a signal the Council has spoken.</p>
+      <div class="council-info-box">
+        <p><strong style="color:var(--gold)">&#128221; Stage 1 &mdash; Proposed:</strong> Your Brommandment enters the pool. The Bros deliberate.</p>
+        <p><strong style="color:var(--gold)">&#11014; Stage 2 &mdash; Rising:</strong> Net votes reach +10. The article has earned its merit before the Council.</p>
+        <p><strong style="color:var(--gold)">&#128274; Stage 3 &mdash; Sacred (Future):</strong> Reserved for the global Council. True ratification is pending.</p>
+      </div>
+      <p style="margin-top:16px;color:#555;font-size:.78rem;font-style:italic">Votes and submissions are currently stored locally in your browser. The global Council of Bros is being convened. Patience is a virtue. Loyalty is law.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Propose a Brommandment</p>
+      <div class="form-group">
+        <label class="form-label" for="bro-name-input">Your Bro Name</label>
+        <input class="form-input" id="bro-name-input" type="text" placeholder="e.g. Greg, The Ghost Hero, Metal Rafa..." maxlength="40">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="brom-text-input">The Brommandment <span style="font-size:.6rem;color:var(--muted)">(max 300 chars)</span></label>
+        <textarea class="form-input" id="brom-text-input" placeholder="A Bro shall never..." maxlength="300"></textarea>
+        <div class="form-error" id="brom-error">This field is required, brother.</div>
+      </div>
+      <button class="submit-btn" onclick="submitBrommandment()">&#128221; SUBMIT TO THE COUNCIL</button>
+    </div>
+
+    <div class="card">
+      <p class="card-title">The Community Pool <span style="color:var(--muted);font-size:.65rem;font-weight:600;letter-spacing:.1em">&mdash; Awaiting Ratification</span></p>
+      <div id="community-pool">
+        <div class="council-empty">
+          <p style="font-size:1.5rem;margin-bottom:12px">&#128221;</p>
+          <p>No Brommandments proposed yet.</p>
+          <p style="color:#666;margin-top:6px;font-size:.8rem">Be the first to submit one above.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <p>The Bro Code — Official Almanac &amp; Field Manual · v2.0</p>
   <p>Established May 14, 2026 &nbsp;·&nbsp; For brothers. By brothers. In service of dignity.</p>
@@ -484,7 +564,7 @@ function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const t = document.getElementById('page-' + name);
   if (t) t.classList.add('active');
-  const map = { brommandments:0, guides:1, cucumber:1, principles:2, hall:3 };
+  const map = { brommandments:0, guides:1, cucumber:1, principles:2, hall:3, council:4 };
   document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
   const links = document.querySelectorAll('.nav-link');
   if (map[name] !== undefined) links[map[name]].classList.add('active');
@@ -495,7 +575,7 @@ function showPage(name) {
 <div id="share-toast">🔗 Link copied to clipboard</div>
 <script>
 function shareItem(id, title) {
-  const base = 'https://markusclaw.github.io/cucumber-protocol/';
+  const base = 'https://thebrommandments.com/';
   const type = id.startsWith('card-') ? 'card' : 'brom';
   const num  = id.split('-')[1];
   const url  = base + type + '/' + num + '/';
@@ -535,5 +615,163 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<script>
+// ============================
+// DATA LAYER
+// Swap these functions for API calls later — rest of code stays identical
+// ============================
+function getVoteData(id) {
+  return JSON.parse(localStorage.getItem('v_' + id) || '{"up":0,"down":0,"myVote":null}');
+}
+function setVoteData(id, data) {
+  localStorage.setItem('v_' + id, JSON.stringify(data));
+}
+function getSubmissions() {
+  return JSON.parse(localStorage.getItem('bro_submissions') || '[]');
+}
+function saveSubmissions(subs) {
+  localStorage.setItem('bro_submissions', JSON.stringify(subs));
+}
+
+// ============================
+// VOTING
+// ============================
+const RISING_THRESHOLD = 10;
+
+function castVote(id, dir) {
+  const data = getVoteData(id);
+  if (data.myVote === dir) {
+    // undo existing vote
+    data[dir === 1 ? 'up' : 'down']--;
+    data.myVote = null;
+  } else {
+    // switch or new vote
+    if (data.myVote !== null) data[data.myVote === 1 ? 'up' : 'down']--;
+    data[dir === 1 ? 'up' : 'down']++;
+    data.myVote = dir;
+  }
+  setVoteData(id, data);
+  renderVoteBtn(id, data);
+  updateCommunityScore(id, data);
+}
+
+function renderVoteBtn(id, data) {
+  if (!data) data = getVoteData(id);
+  const upBtn = document.getElementById('vup-' + id);
+  const dnBtn = document.getElementById('vdn-' + id);
+  if (!upBtn || !dnBtn) return;
+  upBtn.querySelector('span').textContent = data.up;
+  dnBtn.querySelector('span').textContent = data.down;
+  upBtn.className = 'vote-btn' + (data.myVote === 1 ? ' voted-up' : '');
+  dnBtn.className = 'vote-btn' + (data.myVote === -1 ? ' voted-down' : '');
+}
+
+function updateCommunityScore(id, data) {
+  const scoreEl = document.getElementById('score-' + id);
+  if (!scoreEl) return;
+  const net = data.up - data.down;
+  scoreEl.textContent = (net >= 0 ? '+' : '') + net + ' net votes';
+  scoreEl.className = 'score-display' + (net > 0 ? ' positive' : net < 0 ? ' negative' : '');
+  const card = document.getElementById('ccard-' + id);
+  if (card) {
+    card.classList.toggle('rising', net >= RISING_THRESHOLD);
+    const badge = document.getElementById('badge-' + id);
+    if (badge) badge.innerHTML = net >= RISING_THRESHOLD
+      ? '<span class=\"rising-badge\">&#11014; Rising</span>'
+      : '<span class=\"pending-badge\">Pending</span>';
+  }
+}
+
+function initOfficialVotes() {
+  for (var i = 1; i <= 10; i++) renderVoteBtn('brom-' + i);
+}
+
+// ============================
+// COMMUNITY SUBMISSIONS
+// ============================
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function submitBrommandment() {
+  var nameEl = document.getElementById('bro-name-input');
+  var textEl = document.getElementById('brom-text-input');
+  var errEl  = document.getElementById('brom-error');
+  var text = textEl.value.trim();
+  var name = nameEl.value.trim();
+
+  if (!text) { errEl.style.display = 'block'; textEl.focus(); return; }
+  errEl.style.display = 'none';
+  if (name) localStorage.setItem('bro_name', name);
+
+  var sub = {
+    id: 'sub' + Date.now(),
+    author: name || 'Anonymous Bro',
+    text: text,
+    created: Date.now()
+  };
+  var subs = getSubmissions();
+  subs.unshift(sub);
+  saveSubmissions(subs);
+  setVoteData(sub.id, { up:0, down:0, myVote:null });
+  textEl.value = '';
+  renderCommunityPool();
+  showToast('\uD83D\uDCDC Submitted to the Council \u2014 the Bros will deliberate');
+}
+
+function renderCommunityPool() {
+  var pool = document.getElementById('community-pool');
+  if (!pool) return;
+  var subs = getSubmissions();
+  if (!subs.length) {
+    pool.innerHTML = '<div class="council-empty"><p style="font-size:1.5rem;margin-bottom:12px">&#128221;</p><p>No Brommandments proposed yet.</p><p style="color:#666;margin-top:6px;font-size:.8rem">Be the first to submit one above.</p></div>';
+    return;
+  }
+  var sorted = subs.slice().sort(function(a, b) {
+    var va = getVoteData(a.id), vb = getVoteData(b.id);
+    return (vb.up - vb.down) - (va.up - va.down);
+  });
+  var html = sorted.map(function(sub) {
+    var v = getVoteData(sub.id);
+    var net = v.up - v.down;
+    var rising = net >= RISING_THRESHOLD;
+    var d = new Date(sub.created).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+    var badgeHtml = rising
+      ? '<span class="rising-badge">&#11014; Rising</span>'
+      : '<span class="pending-badge">Pending</span>';
+    var scoreClass = 'score-display' + (net > 0 ? ' positive' : net < 0 ? ' negative' : '');
+    var scoreText = (net >= 0 ? '+' : '') + net + ' net votes';
+    var upClass = 'vote-btn' + (v.myVote === 1 ? ' voted-up' : '');
+    var dnClass = 'vote-btn' + (v.myVote === -1 ? ' voted-down' : '');
+    return '<div class="community-brom' + (rising ? ' rising' : '') + '" id="ccard-' + sub.id + '">'
+      + '<div class="community-brom-meta"><span>' + escHtml(sub.author) + '</span>'
+      + '<span>&middot;</span><span>' + d + '</span>'
+      + '<span id="badge-' + sub.id + '">' + badgeHtml + '</span></div>'
+      + '<p class="community-brom-text">' + escHtml(sub.text) + '</p>'
+      + '<div class="vote-row">'
+      + '<button class="' + upClass + '" id="vup-' + sub.id + '" onclick="castVote(\'' + sub.id + '\',1)">&#9650; <span>' + v.up + '</span></button>'
+      + '<button class="' + dnClass + '" id="vdn-' + sub.id + '" onclick="castVote(\'' + sub.id + '\',-1)">&#9660; <span>' + v.down + '</span></button>'
+      + '<span class="' + scoreClass + '" id="score-' + sub.id + '">' + scoreText + '</span>'
+      + '</div></div>';
+  }).join('');
+  pool.innerHTML = html;
+}
+
+// ============================
+// INIT
+// ============================
+window.addEventListener('DOMContentLoaded', function() {
+  initOfficialVotes();
+  renderCommunityPool();
+  var saved = localStorage.getItem('bro_name');
+  if (saved) {
+    var el = document.getElementById('bro-name-input');
+    if (el) el.value = saved;
+  }
+});
+</script>
 </body>
 </html>
