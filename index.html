@@ -210,6 +210,19 @@ textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
 .bvc-up{color:#4caf50}
 .bvc-dn{color:var(--red)}
 .brom-read-btn{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap;margin-top:auto}
+.brom-card-golden .brom-card-left{background:linear-gradient(160deg,#1a1400 0%,#0f0d00 60%,#141200 100%);border-right-color:rgba(201,168,76,.6)}
+.brom-card-golden{border-color:rgba(201,168,76,.25)}
+.brom-card-lesser .brom-card-left{background:linear-gradient(160deg,#0e0e12 0%,#0a0a0e 60%,#0c0c10 100%);border-right-color:rgba(120,120,180,.3)}
+.brom-card-lesser{opacity:.9}
+.brom-section-hdr{display:flex;align-items:center;gap:14px;margin:32px 0 18px;padding:0 2px}
+.brom-section-hdr--golden{margin-top:28px}
+.brom-section-hdr--lesser{margin-top:36px}
+.brom-section-rule{flex:1;height:1px;background:rgba(255,255,255,.1)}
+.brom-section-rule--gold{background:rgba(201,168,76,.35)}
+.brom-section-label{font-size:.58rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.brom-section-label--gold{color:rgba(201,168,76,.75)}
+.brom-section-label--lesser{color:rgba(140,140,160,.6);letter-spacing:.18em}
+.brom-lesser-intro{font-size:.75rem;color:#555;font-style:italic;margin:-6px 0 18px;padding:0 2px;line-height:1.6}
 @media(max-width:640px){
   .brom-card{flex-wrap:wrap}
   .brom-card-left{width:100%;flex-direction:row;padding:16px 20px;gap:14px;border-right:none;border-bottom:2px solid rgba(230,48,48,.3)}
@@ -1029,7 +1042,94 @@ var BROMS = [
     full:'Brotherhood is not about preventing mistakes. It is about bearing witness to them, helping pick up the pieces, and signing an unspoken agreement that this will never leave the circle. Unless it becomes legendary. If it becomes legendary, it becomes a chapter in the Almanac. See: Guides, Chapter I.' },
   { num:10, roman:'X',    title:'A Bro Keeps All Secrets Classified — Forever',
     short:'If a bro confides something — a fear, a failure, a story involving produce — that information is sealed. It does not leave the circle. The vault is permanent.',
-    full:'If a bro confides something — a fear, a failure, a story involving produce, an incident requiring an inflatable evacuation ramp — that information is sealed. It does not leave the circle. It is not brought up at parties, on dates, or in court. The vault is permanent. The sacred contract has no expiration date. This is law. This is the Code.' }
+    full:'If a bro confides something — a fear, a failure, a story involving produce, an incident requiring an inflatable evacuation ramp — that information is sealed. It does not leave the circle. It is not brought up at parties, on dates, or in court. The vault is permanent. The sacred contract has no expiration date. This is law. This is the Code.',
+    tier:'sacred' },
+  // === THE GOLDEN BRO-LAW (Bridge Article) ===
+  { num:11, roman:'XI',   title:'Do Unto a Bro as a Bro Would Do Unto Self',
+    short:'The Golden Bro-Law. Every decision made in the name of brotherhood must pass a simple test: would you want this done to you? If not — do not proceed.',
+    full:'The Golden Bro-Law. Every decision made in the name of brotherhood must pass a simple test: would you want this done to you? If not — do not proceed. This article underpins all others. It is the litmus. The check. The one rule that makes all other rules coherent. A bro is not merely an ally. He is a mirror. Treat him accordingly.',
+    tier:'golden' },
+  // === THE LESSER CODES (Articles XII–XXXI) ===
+  { num:12, roman:'XII',  title:'A Bro Does Not Arrive Empty-Handed',
+    short:'You show up. You bring something. A six-pack, a bag of chips, a story worth telling. The empty hand is the mark of a civilian. We are not civilians.',
+    full:'You show up. You bring something. It does not need to be expensive. It does not need to be requested. A six-pack, a bag of chips, a story worth telling — all are acceptable. The empty hand is the mark of a civilian. We are not civilians. This is the Code.',
+    tier:'lesser' },
+  { num:13, roman:'XIII', title:'A Bro Calls Shotgun. A Bro Respects Shotgun.',
+    short:'The ancient system of vehicle seating is law. Shotgun called before the vehicle is in sight is void. Shotgun called clearly, in the open, stands until disputed. There is no court of appeals.',
+    full:'The ancient system of vehicle seating is law. Shotgun called before the vehicle is in sight is void. Shotgun called clearly, in the open air, with at least one witness, stands until disputed — and there is no valid basis for dispute. The driver's co-pilot is sacred. There is no court of appeals. This is the Code.',
+    tier:'lesser' },
+  { num:14, roman:'XIV',  title:'A Bro Does Not Touch Another Bro's Food Without Permission',
+    short:'The fries are not communal unless stated. The wings are not shared unless offered. The burrito is never up for discussion. Ask first. Always.',
+    full:'The fries are not communal unless declared so. The wings are not shared unless offered. The burrito is never, under any circumstances, up for discussion. You may ask. You must ask. And you must accept the answer without negotiation. Food is personal. This is the Code.',
+    tier:'lesser' },
+  { num:15, roman:'XV',   title:'A Bro Never Lets Another Bro Drive Angry',
+    short:'If your bro is in no condition to drive — emotionally, physically, philosophically — you take the keys. No debate. No drama. You become the driver.',
+    full:'If your bro is in no condition to operate a vehicle — whether due to emotional state, physical impairment, or a philosophical spiral about his place in the universe — you take the keys. No debate. No drama. No bruised ego. You become the driver. He gets home. This is non-negotiable. This is the Code.',
+    tier:'lesser' },
+  { num:16, roman:'XVI',  title:'A Bro Accepts the Handshake. No Further Discussion.',
+    short:'When a bro extends a hand — or a fist, or an elbow, or whatever gesture has evolved within the circle — you match it. Without hesitation. Without irony.',
+    full:'When a bro extends a hand — or a fist, or an elbow, or the particular multi-stage greeting that your specific circle has evolved over years — you match it. Without hesitation. Without irony. Without attempting to introduce a competing handshake mid-sequence. Consistency is brotherhood. This is the Code.',
+    tier:'lesser' },
+  { num:17, roman:'XVII', title:'A Bro Does Not Spoil the Ending',
+    short:'You have seen the film. Your bro has not. This information must be managed with discipline. Facial expressions count. Vague hinting counts. All spoilers are violations.',
+    full:'You have seen the film, the finale, the fight, the match. Your bro has not. This information must be managed with strict discipline. Facial expressions during plot moments count as spoilers. Vague hinting is a spoiler. "You'll see" is a spoiler. Silence is acceptable. Silence is the Code.',
+    tier:'lesser' },
+  { num:18, roman:'XVIII', title:'A Bro Covers the Tab When the Tab Is There to Be Covered',
+    short:'If the moment calls for it — if you are flush and your bro is not — you cover the tab. You do not announce it. You do not bring it up again. It was never a transaction.',
+    full:'If the moment calls for it — if you are flush and your bro is clearly not — you cover the tab. You do not announce it. You do not bring it up again. You do not place it in a mental ledger expecting repayment at an awkward future time. It was never a transaction. It was brotherhood. This is the Code.',
+    tier:'lesser' },
+  { num:19, roman:'XIX',  title:'A Bro Does Not Over-Explain His Outfit',
+    short:'You chose it. You are wearing it. If your bro questions it, the answer is a shrug and forward movement. Confidence requires no footnotes.',
+    full:'You chose the outfit. You are wearing it. If your bro questions it, the answer is a shrug and forward movement. If a stranger questions it, the answer is also a shrug and forward movement. Confidence requires no footnotes. A bro does not defend his aesthetic. He inhabits it. This is the Code.',
+    tier:'lesser' },
+  { num:20, roman:'XX',   title:'A Bro Never Negotiates at the Grill',
+    short:'The bro at the grill has absolute authority over cook time, temperature, and sequencing. You do not hover. You do not suggest. You wait. You receive.',
+    full:'The bro at the grill has absolute authority over cook time, temperature, order of operations, and all sequencing decisions. You do not hover behind him. You do not peer over his shoulder. You do not offer suggestions about doneness, flame height, or seasoning. You wait. You receive. You express gratitude. This is the Code.',
+    tier:'lesser' },
+  { num:21, roman:'XXI',  title:'A Bro Acknowledges the Nod',
+    short:'Across a parking lot, across a room, across the universe — when a bro gives the nod, you nod back. The nod is a complete sentence. It requires no follow-up.',
+    full:'Across a parking lot, across a crowded room, across any distance where eye contact is possible — when a bro gives the nod, you nod back. The nod is a complete sentence. It communicates: I see you. I acknowledge you. We are in agreement about existence. It requires no follow-up. The nod is eternal. This is the Code.',
+    tier:'lesser' },
+  { num:22, roman:'XXII', title:'A Bro Respects the Bet',
+    short:'If a bet was made in good faith and the terms were clear, the bet must be honored. There is no revisiting the terms post-outcome. The bet is sacred.',
+    full:'If a bet was made — in good faith, with clear terms, witnessed or recorded by the circle — and the outcome is determined, the bet must be honored. There is no post-outcome negotiation of terms. No sudden amnesia about the stakes. The bro who loses pays. The bro who wins receives. The bet is sacred. This is the Code.',
+    tier:'lesser' },
+  { num:23, roman:'XXIII', title:'A Bro Does Not Interfere With a Running Bit',
+    short:'If a bit is established, running, and landing — you support it. You do not explain it. You do not break. You do not look at the camera. You are in the bit.',
+    full:'If a bit is established within the circle — running, evolving, and landing — you support it. You do not explain it to outsiders. You do not break character mid-execution. You do not look at an invisible camera. You are in the bit. The bit lives as long as the bit needs to live. This is the Code.',
+    tier:'lesser' },
+  { num:24, roman:'XXIV', title:'A Bro Never Wears the Jersey of the Enemy',
+    short:'The enemy's colors are the enemy's colors. This is non-negotiable. On game day, at the stadium, and in the general vicinity of bro gatherings, you represent correctly.',
+    full:'The team your circle opposes is the team you oppose. The colors are their colors. The jersey is their jersey. On game day, at the stadium, in any context where allegiance is a live question, you represent correctly. There is no "it was on sale" defense. There is no irony clause. This is the Code.',
+    tier:'lesser' },
+  { num:25, roman:'XXV',  title:'A Bro Does Not Comment on Another Bro's Sleep Schedule',
+    short:'He sleeps when he sleeps. He is awake when he is awake. This is his domain. You do not audit it. You do not editorialize. You accommodate.',
+    full:'He sleeps when he sleeps. He is awake when he is awake. The hours he keeps are his hours. You do not audit them, editorialize them, or use them as evidence in a character assessment. If you need him and he is unavailable, you wait. You accommodate. You are not his alarm clock. This is the Code.',
+    tier:'lesser' },
+  { num:26, roman:'XXVI', title:'A Bro Maintains the Roster',
+    short:'A bro knows who is in and who is not. He does not accidentally invite the wrong person. He does not casually expand the circle without consensus.',
+    full:'A bro maintains awareness of who is in the circle and who is not. He does not accidentally invite an outsider to a sacred gathering. He does not casually expand the circle without group consensus. The roster is not bureaucracy. It is geography. It defines where the circle ends. This is the Code.',
+    tier:'lesser' },
+  { num:27, roman:'XXVII', title:'A Bro Does Not Mock the Victory Lap',
+    short:'When your bro wins — a game, an argument, a long-running personal struggle — you let him have the moment. The lap is earned. You are his crowd.',
+    full:'When your bro wins — a match, an argument, a personal goal he has been chasing for months — you let him have the moment. You do not minimize. You do not redirect. You do not immediately pivot to your own story. The lap is earned. You are his crowd. This is the Code.',
+    tier:'lesser' },
+  { num:28, roman:'XXVIII', title:'A Bro Pays His Debts in a Reasonable Time Frame',
+    short:'What constitutes "reasonable" shall be defined by the nature of the debt and the patience of the creditor bro. Both parties understand this implicitly. No further clarification is required.',
+    full:'What constitutes a "reasonable time frame" shall be defined by the nature of the debt, the size of the amount, the current financial position of the debtor, and the patience of the creditor bro. Both parties understand this implicitly. No invoice is required. No interest accrues. But eventually — and this is the important part — the debt must be settled. This is the Code.',
+    tier:'lesser' },
+  { num:29, roman:'XXIX', title:'A Bro Does Not Ask Why — He Simply Assists',
+    short:'If your bro needs help moving something large, getting somewhere fast, or making a situation disappear — you do not ask why. You assist. The explanation, if it comes, comes after.',
+    full:'If your bro needs help moving something large, reaching a location quickly, making a situation disappear, or acquiring a significant amount of rope at an unusual hour — you do not ask why. You assist. The explanation, if it is warranted, will come after. The time for questions is not when the request is made. This is the Code.',
+    tier:'lesser' },
+  { num:30, roman:'XXX',  title:'A Bro Never Reveals His Wi-Fi Password to Non-Bros',
+    short:'The network is yours. Access is a privilege extended to those within the circle. The guest network exists for a reason. Use it accordingly.',
+    full:'The network is yours. Access to it is a privilege extended only to those within the circle. The guest network exists precisely for the category of people who are not in the circle. You do not hand out the main password casually. You do not share it with someone you met once. You know who gets the real one. This is the Code.',
+    tier:'lesser' },
+  { num:31, roman:'XXXI', title:'A Bro Always Has an Exit Strategy',
+    short:'No bro enters a social situation without knowing how to leave it. This is not pessimism. This is professionalism. The exit is part of the plan.',
+    full:'No bro enters a social situation, gathering, commitment, or conversation without having considered how to exit it if necessary. The exit does not need to be deployed. But it must exist. This is not pessimism — it is professionalism. The bro who is never trapped is the bro who planned. This is the Code.',
+    tier:'lesser' }
 ];
 
 // ============================
@@ -1038,11 +1138,12 @@ var BROMS = [
 function renderBromCards() {
   var list = document.getElementById('brom-cards-list');
   if (!list) return;
-  list.innerHTML = BROMS.map(function(b) {
+  function makeCard(b) {
     var v = getVoteData('brom-' + b.num);
     var net = v.up - v.down;
     var rank = getBroRank(net);
-    return '<button class="brom-card" onclick="showBromDetail(' + b.num + ')">'
+    var tierCls = b.tier === 'lesser' ? ' brom-card-lesser' : b.tier === 'golden' ? ' brom-card-golden' : '';
+    return '<button class="brom-card' + tierCls + '" onclick="showBromDetail(' + b.num + ')">'
       + '<div class="brom-card-left">'
       +   '<span class="brom-card-roman">' + b.roman + '</span>'
       +   '<span class="brom-card-ornament">&#9674;</span>'
@@ -1061,7 +1162,23 @@ function renderBromCards() {
       +   '<span class="brom-read-btn">Read Article &#8594;</span>'
       + '</div>'
       + '</button>';
-  }).join('');
+  }
+  var sacred = BROMS.filter(function(b){ return b.tier === 'sacred'; });
+  var golden = BROMS.filter(function(b){ return b.tier === 'golden'; });
+  var lesser = BROMS.filter(function(b){ return b.tier === 'lesser'; });
+  var html = '';
+  html += '<div class="brom-section-hdr"><span class="brom-section-rule"></span><span class="brom-section-label">&#9670; The Ten Sacred Brommandments &#9670;</span><span class="brom-section-rule"></span></div>';
+  html += sacred.map(makeCard).join('');
+  if (golden.length) {
+    html += '<div class="brom-section-hdr brom-section-hdr--golden"><span class="brom-section-rule brom-section-rule--gold"></span><span class="brom-section-label brom-section-label--gold">&#9670; The Golden Bro-Law &#9670;</span><span class="brom-section-rule brom-section-rule--gold"></span></div>';
+    html += golden.map(makeCard).join('');
+  }
+  if (lesser.length) {
+    html += '<div class="brom-section-hdr brom-section-hdr--lesser"><span class="brom-section-rule"></span><span class="brom-section-label brom-section-label--lesser">&#9671; The Lesser Codes &#9671;</span><span class="brom-section-rule"></span></div>';
+    html += '<p class="brom-lesser-intro">Articles of secondary standing. Lesser in hierarchy only — not in enforcement. A violation is still a violation.</p>';
+    html += lesser.map(makeCard).join('');
+  }
+  list.innerHTML = html;
 }
 
 // ============================
