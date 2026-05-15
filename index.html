@@ -158,6 +158,30 @@ textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
 .council-info-box p{font-size:.82rem;color:#aaa;margin-bottom:10px}
 .council-info-box p:last-child{margin-bottom:0}
 @media(max-width:600px){.vote-btn{min-width:44px;padding:5px 8px}.nav-link{font-size:.6rem;padding:6px 6px}}
+
+/* === RANK BADGES === */
+.rank-badge{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;padding:4px 10px;border-radius:4px;white-space:nowrap}
+.rank-base{background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--border)}
+.rank-noted{background:rgba(68,136,255,.1);color:var(--blue);border:1px solid rgba(68,136,255,.25)}
+.rank-distinguished{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.rank-mighty{background:rgba(230,48,48,.12);color:#ff7070;border:1px solid rgba(230,48,48,.4)}
+.rank-legendary{background:rgba(201,168,76,.18);color:#e8c97a;border:1px solid rgba(201,168,76,.55);box-shadow:0 0 10px rgba(201,168,76,.15)}
+.rank-immortal{background:linear-gradient(135deg,rgba(201,168,76,.22),rgba(230,48,48,.14));color:#fff;border:1px solid rgba(201,168,76,.65);box-shadow:0 0 16px rgba(201,168,76,.2)}
+/* === HALL ENTRIES === */
+.hall-entry{border:1px solid var(--border);border-radius:8px;padding:20px 22px;margin-bottom:14px;background:var(--bg2);transition:border-color .3s,box-shadow .3s}
+.hall-entry.rank-noted{border-color:rgba(68,136,255,.2)}
+.hall-entry.rank-distinguished{border-color:rgba(201,168,76,.25);background:rgba(201,168,76,.03)}
+.hall-entry.rank-mighty{border-color:rgba(230,48,48,.3);background:rgba(230,48,48,.03)}
+.hall-entry.rank-legendary{border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.06);box-shadow:0 2px 24px rgba(201,168,76,.1)}
+.hall-entry.rank-immortal{border-color:rgba(201,168,76,.65);background:linear-gradient(160deg,rgba(201,168,76,.08),rgba(230,48,48,.05));box-shadow:0 4px 32px rgba(201,168,76,.15),0 0 6px rgba(230,48,48,.1)}
+.hall-entry-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.hall-entry-left{flex:1;min-width:0}
+.hall-bro-name{font-size:1rem;font-weight:900;color:#fff;letter-spacing:.02em;margin-bottom:4px}
+.hall-nominator{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hall-chronicle{font-size:.87rem;color:#c0c0c0;line-height:1.75;margin-bottom:14px;font-style:italic}
+.hall-empty{text-align:center;padding:48px 20px;color:var(--muted);font-size:.85rem;line-height:2}
+.founding-badge{display:inline-block;font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3);margin-left:8px;vertical-align:middle}
+.self-nom-note{font-size:.72rem;color:var(--muted);margin-top:6px;font-style:italic}
 </style>
 </head>
 <body>
@@ -472,11 +496,11 @@ textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
   <div class="hero" style="padding:56px 24px 48px">
     <p class="hero-eyebrow">Chapter III · Brotherhood</p>
     <h1 class="hero-title" style="font-size:clamp(2rem,7vw,4.5rem)">HALL<br>OF<br>BROS</h1>
-    <p class="hero-sub">Brothers who have walked the path, survived the Protocol, and lived to say nothing about it.</p>
+    <p class="hero-sub">Brothers who have walked the path, survived the Protocol, and lived to say nothing about it. Nominate a bro. Chronicle their deeds. Let the Council rank them accordingly.</p>
   </div>
   <div class="container">
     <div class="card">
-      <p class="card-title">Verified Testimonials</p>
+      <p class="card-title">The Founding Chronicles <span class="founding-badge">&#9733; Original · Verified &amp; Sealed</span></p>
       <div class="testimonial">
         <p class="testimonial-text">"I thought I could never eat a cucumber again. The Protocol gave me my life back. I can now walk to my kitchen with my head held high. Cold water. Metal music. No eye contact. I am free."</p>
         <p class="testimonial-author"><span>Greg Anthony</span> · El Cajon, CA · Founder &amp; Brommandment I Specialist</p>
@@ -500,6 +524,46 @@ textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
       <p>There is a compromise you cannot accept but likely cannot avoid. It is only a matter of <span class="hl">when, how, and around who</span>.</p>
       <p>Once you've walked this path, you understand what it means to be tested, what it means to endure, and what it means to choose your battlefield.</p>
       <p>You will never look at cucumbers the same way. <span class="hl-gold">You will understand sacrifice.</span></p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Nominate a Bro</p>
+      <p style="color:#999;font-size:.85rem;margin-bottom:20px">Chronicle a worthy feat. Self-nominations are not only permitted &mdash; they are encouraged. A bro who knows his own valor is a bro who does not wait for permission. The Council will decide the rest.</p>
+      <div class="form-group">
+        <label class="form-label" for="hall-nominator">Your Bro Name</label>
+        <input class="form-input" id="hall-nominator" type="text" placeholder="Who is bearing witness?" maxlength="40">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="hall-nominee">Bro Being Honored <span style="font-size:.6rem;color:var(--muted)">(can be yourself)</span></label>
+        <input class="form-input" id="hall-nominee" type="text" placeholder="The bro whose deeds demand recognition" maxlength="60">
+        <div class="form-error" id="hall-nominee-error">A bro must be named, brother.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="hall-chronicle">The Chronicle <span style="font-size:.6rem;color:var(--muted)">(the feat — max 400 chars)</span></label>
+        <textarea class="form-input" id="hall-chronicle" placeholder="Describe the act of bravery, loyalty, stupidity, or silent sacrifice that demands recognition..." maxlength="400" style="min-height:110px"></textarea>
+        <div class="form-error" id="hall-chronicle-error">The chronicle cannot be left blank.</div>
+      </div>
+      <button class="submit-btn" onclick="submitNomination()">&#127942; INDUCT INTO THE HALL</button>
+      <p class="self-nom-note">&#128274; All chronicles are stored locally in your browser. The global Hall is being constructed. Patience, brother.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Hall of the Mighty <span style="color:var(--muted);font-size:.65rem;font-weight:600;letter-spacing:.1em">&mdash; Community Chronicles · Ranked by Admiration</span></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+        <span class="rank-badge rank-base">&#129473; Bro in Good Standing</span>
+        <span class="rank-badge rank-noted">&#129351; Noted Bro</span>
+        <span class="rank-badge rank-distinguished">&#127945; Distinguished Bro</span>
+        <span class="rank-badge rank-mighty">&#9876;&#65039; Mighty Bro</span>
+        <span class="rank-badge rank-legendary">&#127942; Legendary Bro</span>
+        <span class="rank-badge rank-immortal">&#128081; Immortal Bro</span>
+      </div>
+      <div id="hall-of-mighty">
+        <div class="hall-empty">
+          <p style="font-size:1.5rem;margin-bottom:12px">&#127942;</p>
+          <p>The Hall awaits its first inductee.</p>
+          <p style="color:#555;margin-top:6px;font-size:.8rem">No bro has yet been chronicled. Be the first.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -654,6 +718,7 @@ function castVote(id, dir) {
   setVoteData(id, data);
   renderVoteBtn(id, data);
   updateCommunityScore(id, data);
+  updateHallEntry(id, data);
 }
 
 function renderVoteBtn(id, data) {
@@ -766,12 +831,150 @@ function renderCommunityPool() {
 window.addEventListener('DOMContentLoaded', function() {
   initOfficialVotes();
   renderCommunityPool();
+  renderHallOfMighty();
   var saved = localStorage.getItem('bro_name');
   if (saved) {
     var el = document.getElementById('bro-name-input');
     if (el) el.value = saved;
   }
 });
+</script>
+
+<script>
+// ============================
+// HALL OF BROS — RANK SYSTEM + NOMINATIONS
+// ============================
+var HALL_RANKS = [
+  { min:40, cls:'rank-immortal',     icon:'&#128081;', label:'Immortal Bro'        },
+  { min:25, cls:'rank-legendary',    icon:'&#127942;', label:'Legendary Bro'       },
+  { min:15, cls:'rank-mighty',       icon:'&#9876;&#65039;', label:'Mighty Bro'    },
+  { min:8,  cls:'rank-distinguished',icon:'&#127945;', label:'Distinguished Bro'   },
+  { min:3,  cls:'rank-noted',        icon:'&#129351;', label:'Noted Bro'           },
+  { min:-999,cls:'rank-base',        icon:'&#129473;', label:'Bro in Good Standing'}
+];
+
+function getBroRank(net) {
+  for (var i = 0; i < HALL_RANKS.length; i++) {
+    if (net >= HALL_RANKS[i].min) return HALL_RANKS[i];
+  }
+  return HALL_RANKS[HALL_RANKS.length - 1];
+}
+
+function getHallNominations() {
+  return JSON.parse(localStorage.getItem('hall_nominations') || '[]');
+}
+function saveHallNominations(list) {
+  localStorage.setItem('hall_nominations', JSON.stringify(list));
+}
+
+function submitNomination() {
+  var nomEl  = document.getElementById('hall-nominator');
+  var neeEl  = document.getElementById('hall-nominee');
+  var chrEl  = document.getElementById('hall-chronicle');
+  var neeErr = document.getElementById('hall-nominee-error');
+  var chrErr = document.getElementById('hall-chronicle-error');
+
+  var nominator = nomEl.value.trim();
+  var nominee   = neeEl.value.trim();
+  var chronicle = chrEl.value.trim();
+  var valid = true;
+
+  neeErr.style.display = 'none';
+  chrErr.style.display = 'none';
+
+  if (!nominee)   { neeErr.style.display = 'block'; neeEl.focus(); valid = false; }
+  if (!chronicle) { chrErr.style.display = 'block'; if (valid) chrEl.focus(); valid = false; }
+  if (!valid) return;
+
+  if (nominator) localStorage.setItem('bro_name', nominator);
+
+  var entry = {
+    id: 'h' + Date.now(),
+    nominee:   nominee,
+    nominator: nominator || 'Anonymous Bro',
+    isSelf:    nominee.toLowerCase() === nominator.toLowerCase() && !!nominator,
+    chronicle: chronicle,
+    created:   Date.now()
+  };
+
+  var list = getHallNominations();
+  list.unshift(entry);
+  saveHallNominations(list);
+  setVoteData(entry.id, { up:0, down:0, myVote:null });
+
+  neeEl.value = '';
+  chrEl.value = '';
+  renderHallOfMighty();
+  showToast('\u{1F3C6} ' + nominee + ' has been inducted into the Hall — the Bros will judge');
+}
+
+function updateHallEntry(id, data) {
+  var card = document.getElementById('hcard-' + id);
+  if (!card) return;
+  var net = data.up - data.down;
+  var rank = getBroRank(net);
+
+  // Update card class
+  card.className = 'hall-entry ' + rank.cls;
+
+  // Update rank badge
+  var badge = document.getElementById('hbadge-' + id);
+  if (badge) badge.innerHTML = '<span class="rank-badge ' + rank.cls + '">' + rank.icon + ' ' + rank.label + '</span>';
+
+  // Update score
+  var score = document.getElementById('hscore-' + id);
+  if (score) {
+    score.textContent = (net >= 0 ? '+' : '') + net + ' net votes';
+    score.className = 'score-display' + (net > 0 ? ' positive' : net < 0 ? ' negative' : '');
+  }
+}
+
+function renderHallOfMighty() {
+  var hall = document.getElementById('hall-of-mighty');
+  if (!hall) return;
+  var list = getHallNominations();
+  if (!list.length) {
+    hall.innerHTML = '<div class="hall-empty"><p style="font-size:1.5rem;margin-bottom:12px">&#127942;</p><p>The Hall awaits its first inductee.</p><p style="color:#555;margin-top:6px;font-size:.8rem">No bro has yet been chronicled. Be the first.</p></div>';
+    return;
+  }
+  var sorted = list.slice().sort(function(a, b) {
+    var va = getVoteData(a.id), vb = getVoteData(b.id);
+    return (vb.up - vb.down) - (va.up - va.down);
+  });
+
+  var rankNums = {};
+  sorted.forEach(function(entry, idx) { rankNums[entry.id] = idx + 1; });
+
+  hall.innerHTML = sorted.map(function(entry, idx) {
+    var v = getVoteData(entry.id);
+    var net = v.up - v.down;
+    var rank = getBroRank(net);
+    var d = new Date(entry.created).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+    var nominatorLine = entry.isSelf
+      ? '<span class="hall-nominator">Self-nominated &middot; ' + d + '</span>'
+      : '<span class="hall-nominator">Nominated by ' + escHtml(entry.nominator) + ' &middot; ' + d + '</span>';
+    var upCls = 'vote-btn' + (v.myVote === 1 ? ' voted-up' : '');
+    var dnCls = 'vote-btn' + (v.myVote === -1 ? ' voted-down' : '');
+    var scoreCls = 'score-display' + (net > 0 ? ' positive' : net < 0 ? ' negative' : '');
+    var posLabel = idx === 0 ? ' &nbsp;<span style="font-size:.6rem;color:var(--gold);font-weight:800;letter-spacing:.1em;text-transform:uppercase">#1 IN THE HALL</span>' : '';
+
+    return '<div class="hall-entry ' + rank.cls + '" id="hcard-' + entry.id + '">'
+      + '<div class="hall-entry-header">'
+      + '<div class="hall-entry-left">'
+      + '<div class="hall-bro-name">' + escHtml(entry.nominee) + posLabel + '</div>'
+      + nominatorLine
+      + '</div>'
+      + '<div id="hbadge-' + entry.id + '"><span class="rank-badge ' + rank.cls + '">' + rank.icon + ' ' + rank.label + '</span></div>'
+      + '</div>'
+      + '<p class="hall-chronicle">&ldquo;' + escHtml(entry.chronicle) + '&rdquo;</p>'
+      + '<div class="vote-row">'
+      + '<button class="' + upCls + '" id="vup-' + entry.id + '" onclick="castVote(\'' + entry.id + '\',1)">&#9650; <span>' + v.up + '</span></button>'
+      + '<button class="' + dnCls + '" id="vdn-' + entry.id + '" onclick="castVote(\'' + entry.id + '\',-1)">&#9660; <span>' + v.down + '</span></button>'
+      + '<span class="' + scoreCls + '" id="hscore-' + entry.id + '">' + (net >= 0 ? '+' : '') + net + ' net votes</span>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
 </script>
 </body>
 </html>
