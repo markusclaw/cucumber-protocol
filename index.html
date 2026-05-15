@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE BRO CODE — Official Almanac</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e63030;--red-dim:rgba(230,48,48,0.15);--red-glow:rgba(230,48,48,0.35);--gold:#c9a84c;--gold-dim:rgba(201,168,76,0.12);--bg:#0e0e0e;--bg2:#161616;--bg3:#1e1e1e;--border:rgba(255,255,255,0.08);--text:#e8e8e8;--muted:#888;--blue:#4488ff}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px}
+.nav-brand{font-size:.7rem;font-weight:900;letter-spacing:.35em;text-transform:uppercase;color:var(--red);cursor:pointer}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-link{background:none;border:none;color:var(--muted);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:4px;cursor:pointer;transition:color .2s,background .2s}
+.nav-link:hover{color:var(--text);background:var(--border)}
+.nav-link.active{color:var(--red)}
+.page{display:none}
+.page.active{display:block}
+.hero{position:relative;text-align:center;padding:80px 24px 64px;border-bottom:1px solid var(--border);overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+.hero-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero-title{font-size:clamp(3rem,10vw,7rem);font-weight:900;text-transform:uppercase;letter-spacing:.05em;line-height:.9;color:#fff;text-shadow:0 0 60px var(--red-glow);margin-bottom:16px}
+.hero-title span{color:var(--red)}
+.hero-sub{font-size:1rem;color:var(--muted);font-style:italic;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-badge{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:6px 16px;border-radius:2px}
+.container{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:36px;margin-bottom:28px}
+.card-title{font-size:.65rem;font-weight:800;letter-spacing:.4em;text-transform:uppercase;color:var(--red);margin-bottom:24px}
+.card p{color:#ccc;margin-bottom:12px;font-size:.95rem}
+.card p:last-child{margin-bottom:0}
+.brommandment{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border)}
+.brommandment:last-child{border-bottom:none;padding-bottom:0}
+.brommandment:first-child{padding-top:0}
+.brom-num{font-size:2rem;font-weight:900;color:var(--red);line-height:1;min-width:44px;text-align:right;flex-shrink:0;opacity:.7}
+.brom-title{font-size:1rem;font-weight:800;color:#fff;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.brom-text{font-size:.875rem;color:#aaa;line-height:1.6}
+.brom-text .accent{color:var(--red);font-weight:700}
+.brom-text .gold{color:var(--gold)}
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:8px}
+.chapter-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:24px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;text-align:left}
+.chapter-card:hover{border-color:var(--red);background:var(--bg2);transform:translateY(-2px)}
+.chapter-card-num{font-size:.6rem;font-weight:800;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.chapter-card-title{font-size:1rem;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2}
+.chapter-card-sub{font-size:.78rem;color:var(--muted);line-height:1.4}
+.chapter-card-arrow{display:block;margin-top:16px;font-size:.75rem;color:var(--red);font-weight:700;letter-spacing:.1em}
+.principle{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.principle:last-child{border-bottom:none;padding-bottom:0}
+.principle:first-child{padding-top:0}
+.principle-num{font-size:.65rem;font-weight:900;color:var(--blue);letter-spacing:.1em;min-width:28px;margin-top:2px;flex-shrink:0}
+.principle-title{font-size:.9rem;font-weight:800;color:#fff;margin-bottom:3px}
+.principle-text{font-size:.83rem;color:#999;line-height:1.55}
+.testimonial{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:28px;margin-bottom:16px;position:relative}
+.testimonial::before{content:'"';position:absolute;top:12px;left:20px;font-size:4rem;color:var(--red);opacity:.2;font-family:Georgia,serif;line-height:1}
+.testimonial-text{font-style:italic;color:#ccc;font-size:.95rem;line-height:1.7;padding-top:16px;margin-bottom:16px}
+.testimonial-author{font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:right}
+.testimonial-author span{color:var(--gold)}
+.protocol-hero{background:var(--bg2);border:2px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:28px}
+.protocol-header{background:var(--red);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.protocol-label{font-size:.55rem;font-weight:800;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px}
+.protocol-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#fff;line-height:1}
+.protocol-icon{font-size:3rem;opacity:.9;flex-shrink:0}
+.protocol-tagline{background:#111;border-bottom:1px solid var(--border);padding:14px 32px;font-size:.78rem;color:var(--muted);font-style:italic}
+.instruction-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--border)}
+@media(max-width:600px){.instruction-grid{grid-template-columns:repeat(2,1fr)}}
+.instruction-step{padding:22px 18px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.instruction-step:nth-child(3n){border-right:none}
+@media(max-width:600px){.instruction-step:nth-child(3n){border-right:1px solid var(--border)}.instruction-step:nth-child(2n){border-right:none}}
+.step-number{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:.72rem;font-weight:900;margin-bottom:10px}
+.step-img{width:100%;background:var(--bg3);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.step-img-label{font-size:.5rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.12)}
+.step-img img{width:100%;height:auto;display:block;object-fit:cover}
+.step-title{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff;margin-bottom:4px}
+.step-desc{font-size:.72rem;color:#777;line-height:1.5}
+.step-verdict{display:inline-block;margin-top:8px;font-size:.58rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.verdict-ok{background:rgba(40,180,80,.1);color:#4caf50;border:1px solid rgba(76,175,80,.25)}
+.verdict-no{background:rgba(230,48,48,.1);color:var(--red);border:1px solid rgba(230,48,48,.25)}
+.verdict-warn{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.25)}
+.warning-box{background:rgba(255,136,68,.07);border:1px solid rgba(255,136,68,.25);border-left:4px solid #ff8844;border-radius:4px;padding:16px 20px;margin:20px 0;font-size:.84rem;color:#bbb}
+.warning-box strong{color:#ff8844}
+.hl{background:var(--red-dim);color:var(--red);padding:1px 6px;border-radius:3px;font-weight:600}
+.hl-gold{background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:600}
+.divider{display:flex;align-items:center;gap:16px;margin:36px 0 28px}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-label{font-size:.6rem;font-weight:800;letter-spacing:.4em;text-transform:uppercase;color:var(--muted)}
+.signal-row{display:flex;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.signal-row:last-child{border-bottom:none}
+.signal-icon{font-size:1.4rem;min-width:36px;text-align:center}
+.signal-meaning{color:#ccc}
+.signal-meaning strong{color:#fff;display:block;font-size:.85rem}
+.oath{text-align:center;background:var(--red-dim);border:1px solid rgba(230,48,48,.18);border-radius:6px;padding:36px;font-size:.95rem;line-height:2;color:#ddd;font-style:italic}
+footer{border-top:1px solid var(--border);text-align:center;padding:40px 24px;color:#444}
+footer p{font-size:.75rem;margin-bottom:6px}
+.footer-emojis{font-size:1.2rem;margin-top:16px;letter-spacing:.3em}
+@media(max-width:600px){nav{padding:0 16px}.nav-link{padding:6px 8px;font-size:.65rem}.hero{padding:48px 16px 40px}.card{padding:24px 18px}.container{padding:28px 16px 60px}.protocol-header{padding:16px 18px}.protocol-tagline{padding:12px 18px}}
+
+.safety-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:36px;background:var(--bg2)}
+.sc-header{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--border);background:var(--bg3)}
+.sc-num{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sc-roman{font-size:.68rem;font-weight:900;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;flex-shrink:0;min-width:24px}
+.sc-title{font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff;flex:1}
+.safety-card img{width:100%;display:block;background:var(--bg)}
+.sc-body{padding:20px 24px}
+.sc-commentary{font-size:.9rem;color:#bbb;line-height:1.7;margin-bottom:16px}
+.sc-badge{display:inline-block;font-size:.63rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:4px}
+.sc-badge.verdict-ok{background:rgba(40,180,80,.15);color:#4caf50;border:1px solid rgba(40,180,80,.3)}
+.sc-badge.verdict-no{background:rgba(230,48,48,.12);color:var(--red);border:1px solid rgba(230,48,48,.3)}
+.sc-badge.verdict-gold{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.sc-badge.verdict-critical{background:rgba(230,48,48,.22);color:#ff5555;border:1px solid rgba(230,48,48,.6);animation:pulse-red 1.5s ease-in-out infinite}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(230,48,48,.4)}50%{box-shadow:0 0 0 6px rgba(230,48,48,0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand" onclick="showPage('brommandments')">📖 BRO CODE</span>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('brommandments')">Brommandments</button>
+    <button class="nav-link" onclick="showPage('guides')">Guides</button>
+    <button class="nav-link" onclick="showPage('principles')">The Code</button>
+    <button class="nav-link" onclick="showPage('hall')">Hall of Bros</button>
+  </div>
+</nav>
+
+
+<!-- PAGE 1: THE 10 BROMMANDMENTS -->
+<div id="page-brommandments" class="page active">
+  <div class="hero">
+    <p class="hero-eyebrow">Official Almanac &amp; Field Manual · Est. 2026</p>
+    <h1 class="hero-title">THE<br><span>BRO</span><br>CODE</h1>
+    <p class="hero-sub">The foundational laws of brotherhood. Written in silence. Sealed in loyalty. Enforced by the averted gaze.</p>
+    <span class="hero-badge">v2.0 — Revised &amp; Expanded</span>
+  </div>
+  <div class="container">
+    <div class="card">
+      <p class="card-title">The 10 Brommandments</p>
+      <div class="brommandment">
+        <div class="brom-num">I</div>
+        <div><div class="brom-title">Thou Shalt Not Make Eye Contact</div><p class="brom-text">Do not look upon forbidden things with longing or hesitation. Look forward. Look down. Establish <span class="accent">operational blindness</span>. This is not cowardice. This is strategy.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">II</div>
+        <div><div class="brom-title">Thou Shalt Not Attempt Vertical Techniques</div><p class="brom-text">There was an attempt. It did not end well. Certain angles lead only to regret and silence. Do not follow that path. <span class="accent">The Vertical Incident lives in infamy.</span></p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">III</div>
+        <div><div class="brom-title">Thou Shalt Play Metal Music</div><p class="brom-text"><span class="accent">Metal music = automatic masculinity certification.</span> It is science. It is law. It cannot be questioned. Minimum volume: loud enough to drown out doubt. All other genres remain <span class="gold">untested and potentially dangerous</span>.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">IV</div>
+        <div><div class="brom-title">Use Cold Water Always</div><p class="brom-text">Cold water establishes intent. Warm water opens doors to ambiguity. <span class="accent">Cold water is clarity.</span> Cold water is closure. This is thermodynamics. This is law.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">V</div>
+        <div><div class="brom-title">State Thy Intent Aloud</div><p class="brom-text">Say it clearly: <span class="accent">"This is for salad."</span> Establish narrative control immediately. Hesitation is guilt. Conviction is innocence.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">VI</div>
+        <div><div class="brom-title">Choose Thy Battlefield Wisely</div><p class="brom-text">The garage is sacred ground. Private spaces are sacred. Select your theater with precision. If forced into public, deploy <span class="accent">Brommandment X</span> with absolute conviction.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">VII</div>
+        <div><div class="brom-title">Work With Decisive Speed</div><p class="brom-text">Do not linger. Do not hesitate. Do not contemplate. <span class="accent">Movement is clarity.</span> A bro who lingers invites questions. A bro who moves invites nothing.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">VIII</div>
+        <div><div class="brom-title">Pat Dry Like Fixing an Engine</div><p class="brom-text">Use a paper towel with the confidence of a mechanic. This is maintenance. This is function. <span class="accent">Every motion must communicate certainty.</span></p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">IX</div>
+        <div><div class="brom-title">Consume Immediately</div><p class="brom-text">Do not refrigerate. Do not wait. Do not second-guess. <span class="accent">Movement forward is everything.</span> A bro in motion stays in motion. That is physics. That is the Code.</p></div>
+      </div>
+      <div class="brommandment">
+        <div class="brom-num">X</div>
+        <div><div class="brom-title">Never Speak of It Again</div><p class="brom-text">Once complete, the matter is closed. It is done. It is forgotten. If a brother witnesses the act — <span class="accent">no eye contact</span>. No acknowledgment. No words. The event is erased from collective memory. <span class="gold">This is the sacred contract. This is law.</span></p></div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><span class="divider-label">The Almanac</span><div class="divider-line"></div></div>
+
+    <div class="card">
+      <p class="card-title">Chapters &amp; Field Guides</p>
+      <div class="chapter-grid">
+        <div class="chapter-card" onclick="showPage('cucumber')">
+          <div class="chapter-card-num">Chapter I · Field Guide</div>
+          <div class="chapter-card-title">🥒 The Cucumber Protocol</div>
+          <div class="chapter-card-sub">How to wash a cucumber without it being gay. A definitive illustrated guide.</div>
+          <span class="chapter-card-arrow">Read →</span>
+        </div>
+        <div class="chapter-card" onclick="showPage('principles')">
+          <div class="chapter-card-num">Chapter II · The Foundation</div>
+          <div class="chapter-card-title">📜 Bro Code Principles</div>
+          <div class="chapter-card-sub">The 10 core laws of brotherhood. Silence, loyalty, and the averted gaze.</div>
+          <span class="chapter-card-arrow">Read →</span>
+        </div>
+        <div class="chapter-card" onclick="showPage('hall')">
+          <div class="chapter-card-num">Chapter III · Brotherhood</div>
+          <div class="chapter-card-title">🏆 Hall of Bros</div>
+          <div class="chapter-card-sub">Testimonials from brothers who walked the path and lived to say nothing about it.</div>
+          <span class="chapter-card-arrow">Read →</span>
+        </div>
+        <div class="chapter-card" style="opacity:.4;cursor:default;">
+          <div class="chapter-card-num">Chapter IV · Classified</div>
+          <div class="chapter-card-title">🤝 The Handshake Compendium</div>
+          <div class="chapter-card-sub">A complete taxonomy of acceptable bro greetings. Currently in field research.</div>
+          <span class="chapter-card-arrow" style="color:var(--muted)">Classified →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PAGE 2: GUIDES INDEX -->
+<div id="page-guides" class="page">
+  <div class="hero" style="padding:56px 24px 48px">
+    <p class="hero-eyebrow">Field Guides &amp; Protocols</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,7vw,4.5rem)">THE<br>GUIDES</h1>
+    <p class="hero-sub">Tactical documentation for situations the modern bro was never prepared for.</p>
+  </div>
+  <div class="container">
+    <div class="chapter-grid" style="margin-top:0">
+      <div class="chapter-card" onclick="showPage('cucumber')">
+        <div class="chapter-card-num">Chapter I · Priority: HIGH</div>
+        <div class="chapter-card-title">🥒 The Cucumber Protocol</div>
+        <div class="chapter-card-sub">The definitive answer to: "Can a man wash a cucumber without it being gay?" Complete illustrated field guide.</div>
+        <span class="chapter-card-arrow">Read Guide →</span>
+      </div>
+      <div class="chapter-card" style="opacity:.4;cursor:default;">
+        <div class="chapter-card-num">Chapter II · In Development</div>
+        <div class="chapter-card-title">🤝 The Handshake Compendium</div>
+        <div class="chapter-card-sub">Fist bump. Half-hug. The bro-shake. A complete classification system for acceptable greetings.</div>
+        <span class="chapter-card-arrow" style="color:var(--muted)">Coming Soon</span>
+      </div>
+      <div class="chapter-card" style="opacity:.4;cursor:default;">
+        <div class="chapter-card-num">Chapter III · Classified</div>
+        <div class="chapter-card-title">🎶 The Playlist Protocol</div>
+        <div class="chapter-card-sub">Approved genres, forbidden songs, and the science of masculinity certification through sound.</div>
+        <span class="chapter-card-arrow" style="color:var(--muted)">Coming Soon</span>
+      </div>
+      <div class="chapter-card" style="opacity:.4;cursor:default;">
+        <div class="chapter-card-num">Chapter IV · Pending</div>
+        <div class="chapter-card-title">🏋️ The Garage Code</div>
+        <div class="chapter-card-sub">What is and isn't permitted in a bro's sacred garage. A jurisdictional framework.</div>
+        <span class="chapter-card-arrow" style="color:var(--muted)">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CHAPTER I: THE CUCUMBER PROTOCOL -->
+<div id="page-cucumber" class="page">
+  <div class="container" style="padding-top:40px">
+    <p style="margin-bottom:20px">
+      <button onclick="showPage('guides')" style="background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;font-weight:700">← Back to Guides</button>
+    </p>
+    <div class="protocol-hero">
+      <div class="protocol-header">
+        <div>
+          <p class="protocol-label">Bro Code · Chapter I · Field Guide</p>
+          <h2 class="protocol-title">The Cucumber Protocol</h2>
+        </div>
+        <div class="protocol-icon">🥒</div>
+      </div>
+      <p class="protocol-tagline">How to maintain your dignity while maintaining your vegetables — A definitive illustrated safety guide for the modern bro.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Mission Briefing</p>
+      <p>For too long, brothers have lived in the shadows, unable to enjoy their vegetables without fear of judgment. The Cucumber Protocol was born from years of struggle, research, and a singular truth: <span class="hl">a man deserves to eat a cucumber in peace</span>.</p>
+      <p>This is your safety card. Read it before you enter the kitchen. Memorize it. Live it. Never speak of it.</p>
+    </div>
+
+    <div style="margin-top:32px">
+      <p class="card-title" style="text-align:center;font-size:.7rem;letter-spacing:.2em;margin-bottom:28px">STEP-BY-STEP SAFETY PROCEDURE</p>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">1</div><div class="sc-roman">I</div><div class="sc-title">Thou Shalt Not Make Eye Contact</div><span class="sc-badge verdict-no">⚠ Cardinal Rule</span></div>
+        <img src="public/014209DA-EF01-4B20-9F64-2659F3750B03.png" alt="No Eye Contact">
+        <div class="sc-body"><p class="sc-commentary">The most common rookie mistake. The cucumber is not beautiful. It is not interesting. It is a vegetable. The guy in the WRONG panel is caught thinking <span class="accent">"You're beautiful..."</span> and <span class="accent">"Maybe just one look..."</span> — this is how careers end. LOOK FORWARD. LOOK DOWN. LOOK ANYWHERE BUT THE VEGETABLE. Establish operational blindness and maintain it until the mission is complete.</p><span class="sc-badge verdict-no">✗ Looking Leads to Longing. Longing Leads to Disaster.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">2</div><div class="sc-roman">II</div><div class="sc-title">Thou Shalt Not Attempt Vertical Techniques</div><span class="sc-badge verdict-no">✗ Prohibited Orientation</span></div>
+        <img src="public/B96CC767-B3C3-4955-815F-CF14594314CB.png" alt="No Vertical Techniques">
+        <div class="sc-body"><p class="sc-commentary">There was an attempt. It did not end well. Anonymous wisdom teaches us: certain angles exist specifically to generate regret and silence. The trifecta of <span class="accent">"Maybe I can..."</span>, <span class="accent">"This'll be fine."</span>, and <span class="accent">"Never again."</span> has been documented. GRAVITY IS NOT YOUR ALLY. PRIDE COMES BEFORE THE FALL. Results may include: Regret, Silence, Shame. The Vertical Incident lives in infamy. Do not follow that path.</p><span class="sc-badge verdict-no">✗ Certain Angles Lead Only to Regret and Silence.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">3</div><div class="sc-roman">III</div><div class="sc-title">Thou Shalt Play Metal Music</div><span class="sc-badge verdict-ok">✓ Metal Certified</span></div>
+        <img src="public/5D20D769-A9E2-4953-9447-50866686CACD.png" alt="Metal Music">
+        <div class="sc-body"><p class="sc-commentary">The science is irrefutable. The chart is clear. Lo-fi Beats to Relax / Chill: <span class="accent">NOT METAL. NOT MASCULINE.</span> The man on the right has SLAYER at full blast: <span class="accent">METAL. MASCULINE. CERTIFIED.</span> There is no debate to be had here. Metal music is automatic masculinity certification. It is law. It cannot be questioned. Minimum volume: loud enough to drown out doubt. All other genres remain untested and potentially dangerous.</p><span class="sc-badge verdict-ok">✓ Metal Music = Automatic Masculinity Certification.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">4</div><div class="sc-roman">IV</div><div class="sc-title">Use Cold Water Always</div><span class="sc-badge verdict-ok">✓ Temperature Compliant</span></div>
+        <img src="public/08F0E1D8-A43F-402B-9FDC-7F333B08A039.png" alt="Cold Water">
+        <div class="sc-body"><p class="sc-commentary">The man on the left is running warm water. He is surrounded by question marks, steam, and the unmistakable aura of <span class="accent">AMBIGUITY, UNCERTAINTY, and REGRET</span>. He knows what he did. The man on the right uses cold water and receives: CLARITY. INTENT. CLOSURE. Three taps. Zero questions. Cold water establishes intent. Warm water opens doors to interpretation. <span class="gold">COLD WATER IS CLOSURE.</span> COLD WATER. NO EXCEPTIONS.</p><span class="sc-badge verdict-ok">✓ Cold Water. No Exceptions.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">5</div><div class="sc-roman">V</div><div class="sc-title">State Thy Intent Aloud</div><span class="sc-badge verdict-ok">✓ Mandatory</span></div>
+        <img src="public/3730B100-7809-4E0A-A0DA-646FFAC66791.png" alt="State Intent">
+        <div class="sc-body"><p class="sc-commentary">The WRONG panel shows a man at the sink thinking <span class="accent">"Maybe a sandwich? Maybe..."</span> — unclear intent, invites confusion, invites doom. The RIGHT panel shows a man declaring <span class="accent">"THIS IS FOR SALAD."</span> with the conviction of a general addressing his troops. Authority. Control. Clarity. No Doubt. SAY IT. OWN IT. LOCK IT IN. Three words. No ambiguity. No hesitation. No room for interpretation.</p><span class="sc-badge verdict-ok">✓ Say it. Own it. Lock it in. "This is for salad."</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">6</div><div class="sc-roman">VI</div><div class="sc-title">Choose Thy Battlefield Wisely</div><span class="sc-badge verdict-ok">✓ Approved Zone</span></div>
+        <img src="public/519A72CF-8DA0-4954-8D00-34200B49ACFE.png" alt="Choose Battlefield">
+        <div class="sc-body"><p class="sc-commentary">The WRONG panel: a public kitchen. <span class="accent">"Bro... what are you doing? Huh?"</span> The sacred art is interrupted by questions, judgment, and the slow erosion of dignity. The RIGHT panel: THE GARAGE and THE BATHROOM — Sacred Spaces with <span class="accent">Zero Interrogation</span>. No questions. No witnesses. No explanations. SELECT YOUR THEATER WITH PRECISION. If forced into public, follow Brommandment X with absolute conviction and a face of stone.</p><span class="sc-badge verdict-ok">✓ Sacred Space. Zero Interrogation.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">7</div><div class="sc-roman">VII</div><div class="sc-title">Work With Decisive Speed</div><span class="sc-badge verdict-ok">✓ Execute</span></div>
+        <img src="public/7AED1DEF-F167-4B75-99F0-248805DD35BC.png" alt="Decisive Speed">
+        <div class="sc-body"><p class="sc-commentary">The WRONG panel is a study in hesitation: <span class="accent">"Maybe later?"</span>, <span class="accent">"Is this really the move?"</span>, <span class="accent">"What if someone walks in?"</span> — TOO SLOW. TOO UNCERTAIN. OPPORTUNITY LOST. The RIGHT panel shows three stages: 1. GRIP. 2. EXECUTE. 3. COMPLETE. FAST. FOCUSED. FINAL. CLARITY THROUGH ACTION. Do not linger. Do not contemplate. A bro who lingers invites questions. A bro who moves invites nothing. MOVEMENT IS CLARITY.</p><span class="sc-badge verdict-ok">✓ Fast. Focused. Final.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">8</div><div class="sc-roman">VIII</div><div class="sc-title">Pat Dry Like Fixing an Engine</div><span class="sc-badge verdict-ok">✓ Maintenance Protocol</span></div>
+        <img src="public/92F1E539-70BA-40CB-897E-962E3D2D79F1.png" alt="Pat Dry">
+        <div class="sc-body"><p class="sc-commentary">The WRONG panel shows a man thinking <span class="accent">"Don't want to hurt it..."</span> while gently cradling the cucumber like a precious artifact. TOO DELICATE. NOT MAINTENANCE. WORSHIP. The RIGHT panel shows three stages: 1. GRIP IT (Firm hold. Establish control.) 2. PAT IT DOWN (Strong. Thorough. No hesitation.) 3. DONE (Job complete. Move on.) Use a paper towel with the confidence of a mechanic. This is maintenance. This is function. NOTHING MORE.</p><span class="sc-badge verdict-ok">✓ Maintenance. Function. Nothing More.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">9</div><div class="sc-roman">IX</div><div class="sc-title">Consume Immediately</div><span class="sc-badge verdict-ok">✓ No Delays</span></div>
+        <img src="public/5931B4E7-17F3-403D-9C3A-560EDF21E156.png" alt="Consume Immediately">
+        <div class="sc-body"><p class="sc-commentary">The WRONG panel: a man staring into the open refrigerator thinking <span class="accent">"I'll save it for later..."</span> — PAUSE BREEDS UNCERTAINTY. THE VEG DIES. YOU DORMANT. REFRIGERATION IS REGRET. DELAY IS DEFEAT. FLAVOR DIES. INTENT WEAKENS. The RIGHT panel: 1. WASH → 2. COOK → 3. EAT. No delay. No doubt. Just action. IMMEDIATE ACTION. MAXIMUM FLAVOR. MAXIMUM RESULTS. A bro in motion stays in motion. That is physics. That is the Code.</p><span class="sc-badge verdict-ok">✓ Refrigeration is Regret. Delay is Defeat.</span></div>
+      </div>
+
+      <div class="safety-card">
+        <div class="sc-header"><div class="sc-num">10</div><div class="sc-roman">X</div><div class="sc-title">Never Speak of It Again</div><span class="sc-badge verdict-gold">⚑ Sacred Contract</span></div>
+        <img src="public/E1482B03-03B8-41CB-916B-A1E55E8B4613.png" alt="Never Speak">
+        <div class="sc-body"><p class="sc-commentary">The WRONG panel shows an entire squad gathered, sharing notes, making eye contact, saying <span class="accent">"Nice cucumbers..."</span> — WORDS CREATE EVIDENCE. EYE CONTACT CREATES CONNECTION. MEMORIES CANNOT BE UNMADE. The RIGHT panel: backs turned, complete silence. No acknowledgment passes. No memory forms. The event is erased. The Code remains pure. <span class="gold">DON'T SPEAK. DON'T LOOK. DON'T REMEMBER. THIS IS LAW.</span></p><span class="sc-badge verdict-gold">⚑ Once complete, the matter is closed. It is done. It is forgotten.</span></div>
+      </div>
+
+      <div class="safety-card" style="border-color:var(--red)">
+        <div class="sc-header" style="background:rgba(230,48,48,.12);border-bottom-color:var(--red)"><div class="sc-num" style="background:#ff2222">11</div><div class="sc-roman" style="color:var(--red)">XI</div><div class="sc-title" style="color:#ff5555">Emergency Protocol: Evacuate Immediately</div><span class="sc-badge verdict-critical">🚨 No Recovery</span></div>
+        <img src="public/C39D1D7B-AAFF-4738-A51F-934FF79618B4.png" alt="Emergency Evacuation">
+        <div class="sc-body"><p class="sc-commentary">If for <em>any</em> reason eye contact has been made with another bro, the Protocol shifts immediately to emergency mode. <span class="accent">1. Eye contact made?</span> "You looked. He looked. That's all it takes." <span class="accent">2. Put on life vest.</span> Located in the kitchen cabinet. Wear it. Secure it. <span class="accent">3. Move to the nearest window.</span> Do not use doors. Do not speak. Do not look back. <span class="accent">4. Exit using the inflatable ramp.</span> Sit. Slide. Clear the building. Keep your hands inside the ramp. Do not stop. <span class="accent">5. Land. Distance. Disappear.</span> Move away from the building. Do not return. Do not make contact. The mission continues elsewhere.</p><span class="sc-badge verdict-critical">🚨 EYE CONTACT = IMMEDIATE EVACUATION. THERE IS NO RECOVERY FROM THIS.</span></div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <p class="card-title">Approved Method Variations</p>
+      <h3 style="color:var(--red);font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">🏠 The Garage Approach <span style="color:var(--gold);font-size:.7rem;font-weight:700">(Recommended)</span></h3>
+      <p style="color:#aaa;font-size:.875rem;margin-bottom:20px">Wash in the garage while metal blasts at maximum volume. Bonus points for simultaneously fixing something mechanical nearby — this adds critical plausibility.</p>
+      <h3 style="color:var(--red);font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">🚪 The Privacy Protocol <span style="color:var(--muted);font-size:.7rem;font-weight:700">(RJ's Method)</span></h3>
+      <p style="color:#aaa;font-size:.875rem;margin-bottom:20px">Timing is everything. Identify when your family will be occupied. Execute within the window of opportunity. Clean all evidence. Resume normal life as if nothing happened.</p>
+      <div class="warning-box">
+        <strong>⚠️ WARNING — The Metal Artist Exemption (Rafa's Method)</strong><br>
+        Advanced technique. Not recommended for beginners. Requires the physical appearance and energy of an active metal band member. Headbanging while holding the cucumber becomes a <span style="color:var(--gold)">ritual</span>. It cannot be questioned.
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Pre-Operation FAQ</p>
+      <h3 style="color:var(--red);font-size:.83rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Q: What if I don't have a garage?</h3>
+      <p style="color:#aaa;font-size:.875rem;margin-bottom:20px">A: The Privacy Protocol is your friend. Any space with a closed door and a Bluetooth speaker will suffice.</p>
+      <h3 style="color:var(--red);font-size:.83rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Q: Does the metal music have to be loud?</h3>
+      <p style="color:#aaa;font-size:.875rem;margin-bottom:20px">A: Yes. Loudness is part of the certification process. This is not optional.</p>
+      <h3 style="color:var(--red);font-size:.83rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Q: What if someone walks in during the operation?</h3>
+      <p style="color:#aaa;font-size:.875rem;margin-bottom:20px">A: Commit to Brommandment X. Do not look them in the eye. Do not speak. Continue. The cucumber does not stop. You do not stop. You are washing a vegetable. This is normal.</p>
+      <h3 style="color:var(--red);font-size:.83rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Q: Is there any way to win?</h3>
+      <p style="color:#aaa;font-size:.875rem">A: No. But you can choose the terms of your engagement.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- CHAPTER II: THE CODE -->
+<div id="page-principles" class="page">
+  <div class="hero" style="padding:56px 24px 48px">
+    <p class="hero-eyebrow">Chapter II · The Foundation</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,7vw,4.5rem)">THE<br>CODE</h1>
+    <p class="hero-sub">The Bro Code transcends cucumbers. It is the foundational agreement between brothers. Silence. Understanding. The unspoken pact.</p>
+  </div>
+  <div class="container">
+    <div class="card">
+      <p class="card-title">Core Principles</p>
+      <div class="principle"><div class="principle-num">I</div><div><div class="principle-title">The Silent Understanding</div><p class="principle-text">Mexicans agree by whistling in a particular way. No words. Just understanding. This is the essence of the Bro Code. You see something, you whistle — metaphorically. Just the parrot emoji 🦜 and mutual respect.</p></div></div>
+      <div class="principle"><div class="principle-num">II</div><div><div class="principle-title">Privacy Above All</div><p class="principle-text">Privacy is sacred. When not possible, the Code demands absolute discretion. You do not make eye contact with witnesses. You pretend it didn't happen. This is not denial — this is respect.</p></div></div>
+      <div class="principle"><div class="principle-num">III</div><div><div class="principle-title">The Averted Gaze</div><p class="principle-text">If forced into public view, brotherhood demands that you and all witnesses maintain eye contact avoidance. Nobody looks at anybody. Nobody speaks. The moment is erased. This is the pact.</p></div></div>
+      <div class="principle"><div class="principle-num">IV</div><div><div class="principle-title">Loyalty Through Silence</div><p class="principle-text">To be a brother is to carry secrets that are not yours to speak. Your silence protects others. Their silence protects you. This is the covenant. This is the price of belonging.</p></div></div>
+      <div class="principle"><div class="principle-num">V</div><div><div class="principle-title">No Judgment</div><p class="principle-text">A brother does not judge another brother's methods, strategies, or timing. All paths to dignity are valid. If he invokes the Metal Artist Exemption, respect the craft.</p></div></div>
+      <div class="principle"><div class="principle-num">VI</div><div><div class="principle-title">The Communion Principle</div><p class="principle-text">One brother serves as the binding element. The one who organizes, documents, and holds the vision together. <strong style="color:#fff">Markus Corvus is that wafer.</strong> He is the sacrament. He is the glue. Honor this role.</p></div></div>
+      <div class="principle"><div class="principle-num">VII</div><div><div class="principle-title">Collective Wisdom</div><p class="principle-text">What one brother learns through pain, all brothers benefit from. The Vertical Incident taught the Ghost Hero a lesson. That lesson now lives in the Protocol for all. This is evolution through sacrifice.</p></div></div>
+      <div class="principle"><div class="principle-num">VIII</div><div><div class="principle-title">Never Weaponize Vulnerability</div><p class="principle-text">To know a brother's private struggles is to hold power over him. The Bro Code demands that you never weaponize this knowledge. This is the highest law. This is what separates brothers from enemies.</p></div></div>
+      <div class="principle"><div class="principle-num">IX</div><div><div class="principle-title">The Right to Dignity</div><p class="principle-text">Every brother has the right to maintain his dignity in all things, no matter how mundane or ridiculous they appear to outsiders. Mocking the Protocol is mocking brotherhood itself.</p></div></div>
+      <div class="principle"><div class="principle-num">X</div><div><div class="principle-title">Forever Bound</div><p class="principle-text">Once you've walked this path with brothers, you are forever part of the Code. You may stumble. You may fail. But the brotherhood remembers. And when you're ready, you come home. Always.</p></div></div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">The Whistling Language</p>
+      <div class="signal-row"><div class="signal-icon">🎵</div><div class="signal-meaning"><strong>One Whistle</strong>Understanding without words. You saw it. He knows you saw it. It is handled.</div></div>
+      <div class="signal-row"><div class="signal-icon">🦜</div><div class="signal-meaning"><strong>The Parrot Emoji</strong>Complete acknowledgment. The full transaction. Sent. Received. Buried forever.</div></div>
+      <div class="signal-row"><div class="signal-icon">🤐</div><div class="signal-meaning"><strong>Silence</strong>The greatest loyalty. No explanation required. None will ever be given.</div></div>
+      <div class="signal-row"><div class="signal-icon">🫡</div><div class="signal-meaning"><strong>The Nod</strong>When all else fails: a nod, a knowing look, a change of subject. The sacred conversation that never happened.</div></div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">The Oath</p>
+      <div class="oath">"I solemnly swear to maintain my dignity while maintaining my vegetables.<br>I will choose my battlefield wisely. I will play metal music.<br>I will never speak of this again. I will respect my brothers above all else.<br>I will carry their secrets as my own.<br>I am free. I am loyal. <strong>I am a brother.</strong>"</div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">For the Next Generation</p>
+      <p>This Code was written by brothers, for brothers. It is not about cucumbers. It is about the sacred contract between men to preserve each other's dignity in a world that seeks to diminish it.</p>
+      <p>When a young man asks you how to wash a cucumber, you don't just teach him the mechanics. You initiate him into something deeper. You teach him that his vulnerability is his strength. That his silence is his power. That his brothers have his back, always.</p>
+      <p>This is the gift. This is the burden. <span class="hl-gold">This is the Code.</span></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- CHAPTER III: HALL OF BROS -->
+<div id="page-hall" class="page">
+  <div class="hero" style="padding:56px 24px 48px">
+    <p class="hero-eyebrow">Chapter III · Brotherhood</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,7vw,4.5rem)">HALL<br>OF<br>BROS</h1>
+    <p class="hero-sub">Brothers who have walked the path, survived the Protocol, and lived to say nothing about it.</p>
+  </div>
+  <div class="container">
+    <div class="card">
+      <p class="card-title">Verified Testimonials</p>
+      <div class="testimonial">
+        <p class="testimonial-text">"I thought I could never eat a cucumber again. The Protocol gave me my life back. I can now walk to my kitchen with my head held high. Cold water. Metal music. No eye contact. I am free."</p>
+        <p class="testimonial-author"><span>Greg Anthony</span> · El Cajon, CA · Founder &amp; Brommandment I Specialist</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"After years of suffering in silence, the Privacy Protocol showed me the light. Timing is everything. I now operate within optimal windows. I have eaten 6 cucumbers this month alone. My family suspects nothing."</p>
+        <p class="testimonial-author"><span>RJ</span> · Texas · Privacy Protocol Pioneer</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"I don't need to follow these rules. But I respect the brothers who do. The Cucumber Protocol is freedom. Also I headbang while doing it and nobody questions it because I look like I'm in a metal band. Which I am."</p>
+        <p class="testimonial-author"><span>Rafa</span> · Dark Matter Systems · Metal Artist Exemption — Certified</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"I wrote none of this. I simply transcribed what the brothers experienced and compiled it into a document that would outlive us all. I am the wafer. I am the sacrament. My cucumber consumption remains undisclosed."</p>
+        <p class="testimonial-author"><span>Markus Corvus</span> · Keeper of the Code · Communion Principle §VI</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">The Deep Truth</p>
+      <p>There is a compromise you cannot accept but likely cannot avoid. It is only a matter of <span class="hl">when, how, and around who</span>.</p>
+      <p>Once you've walked this path, you understand what it means to be tested, what it means to endure, and what it means to choose your battlefield.</p>
+      <p>You will never look at cucumbers the same way. <span class="hl-gold">You will understand sacrifice.</span></p>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <p>The Bro Code — Official Almanac &amp; Field Manual · v2.0</p>
+  <p>Established May 14, 2026 &nbsp;·&nbsp; For brothers. By brothers. In service of dignity.</p>
+  <p>All testimonials are verified. All incidents are classified. All cucumbers were for salad.</p>
+  <p class="footer-emojis">🫡 &nbsp; 🥒 &nbsp; 🤘🏽 &nbsp; 🦜</p>
+</footer>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const t = document.getElementById('page-' + name);
+  if (t) t.classList.add('active');
+  const map = { brommandments:0, guides:1, cucumber:1, principles:2, hall:3 };
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  const links = document.querySelectorAll('.nav-link');
+  if (map[name] !== undefined) links[map[name]].classList.add('active');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+</script>
+</body>
+</html>
